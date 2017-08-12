@@ -12,10 +12,10 @@ const requests = {
         },
         body: JSON.stringify({
             body
-        }).then(function(response){
-            return response.json();
         })
-    }),
+    }).then(function(response){
+            return response.json();
+        }),
     get: (url) => fetch(`${API_ROOT}${url}`, {
         method: 'GET',
         headers: {
