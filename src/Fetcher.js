@@ -8,12 +8,9 @@ const requests = {
         method: 'POST',
         headers: {
             'Content-Type' : 'application/json',
-            'XMLHttpRequest': 'XMLHttpRequest',
-            'authorization': `Token ${token}`
+            'XMLHttpRequest': 'XMLHttpRequest'
         },
-        body: JSON.stringify({
-            body
-        })
+        body: JSON.stringify(body)
     }).then(function(response){
             return response.json();
         }).catch(function(error){
