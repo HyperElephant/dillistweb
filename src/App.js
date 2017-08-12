@@ -2,7 +2,12 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import Fetcher from './Fetcher';
+
 class App extends Component {
+  componentWillMount() {
+    console.log(Fetcher.Auth.current());
+  }
   render() {
     return (
       <div className="App">
