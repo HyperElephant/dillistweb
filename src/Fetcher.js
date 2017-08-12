@@ -15,6 +15,8 @@ const requests = {
         })
     }).then(function(response){
             return response.json();
+        }).catch(function(error){
+            console.log(error);
         }),
     get: (url) => fetch(`${API_ROOT}${url}`, {
         method: 'GET',
@@ -24,6 +26,8 @@ const requests = {
         }
     }).then(function(response){
             return response.json();
+        }).catch(function(error){
+            console.log(error);
         })
 };
 
