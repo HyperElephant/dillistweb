@@ -23,6 +23,7 @@ class App extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    console.log(JSON.stringify({user: {username: this.state.username, email: this.state.email, password: this.state.password}}));
     Fetcher.Auth.register(this.state.username, this.state.email, this.state.password).then(function(response){
       console.log(response);
       if(!response.errors){

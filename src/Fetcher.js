@@ -8,6 +8,7 @@ const requests = {
         method: 'POST',
         headers: {
             'Content-Type' : 'application/json',
+            'XMLHttpRequest': 'XMLHttpRequest',
             'authorization': `Token ${token}`
         },
         body: JSON.stringify({
@@ -18,6 +19,7 @@ const requests = {
         }).catch(function(error){
             console.log(error);
         }),
+
     get: (url) => fetch(`${API_ROOT}${url}`, {
         method: 'GET',
         headers: {
