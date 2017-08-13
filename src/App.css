@@ -22,3 +22,22 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.login-register-form-list {
+  list-style: none;
+}
+
+.login-register-form-list Label {
+  display: inline-block;
+  width: 100px;
+  text-align: left;
+}
+
+.login-register-list-item {
+  margin: 10px;
+}
+
+.register-button {
+  width: 200px;
+  background-color:  gray;
+}

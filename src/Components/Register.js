@@ -40,36 +40,46 @@ class Register extends Component {
     return (
       <div className="Register">
         <form onSubmit={this.handleSubmit}>
-          <label>
-            Email:
-            <input 
-              name="email"
-              type="text" 
-              value={this.state.email} 
-              onChange={this.handleChange}/>
-          </label>
-          <label>
-            Username:
-            <input 
-              name="username"
-              type="text" 
-              value={this.state.username} 
-              onChange={this.handleChange}/>
-          </label>
-          <label>
-            Password:
-            <input
-              name="password"
-              type="text"
-              value={this.state.password}
-              onChange={this.handleChange}/>
-          </label>
-          <input 
-            type="submit"
-            value="Submit" />
+            <ul className="login-register-form-list">
+                <li className="login-register-list-item">
+                    <label>
+                        Email:
+                    </label>
+                    <input 
+                        name="email"
+                        type="text" 
+                        value={this.state.email} 
+                        onChange={this.handleChange}/>
+                </li>
+                <li className="login-register-list-item">
+                    <label>
+                        Username:
+                    </label>
+                    <input 
+                        name="username"
+                        type="text" 
+                        value={this.state.username} 
+                        onChange={this.handleChange}/>
+                </li>
+                <li className="login-register-list-item">
+                    <label>
+                        Password:
+                    </label>
+                    <input
+                        name="password"
+                        type="text"
+                        value={this.state.password}
+                        onChange={this.handleChange}/>
+                </li>
+                <li className="login-register-list-item">
+                    <input className="register-button"
+                        type="submit"
+                        value="Submit" />
+                </li>
+                </ul>
         </form>
         <div>
-          Hello {this.state.username}!
+        Hello {this.state.username}!
         </div>
       </div>
     );
