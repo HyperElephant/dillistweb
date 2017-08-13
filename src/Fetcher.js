@@ -1,4 +1,4 @@
-import fetch from 'node-fetch';
+import fetch from 'isomorphic-fetch';
 
 const API_ROOT = 'http://server.dillist.com/api';
 let token = null;
