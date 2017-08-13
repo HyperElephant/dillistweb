@@ -3,12 +3,13 @@ import '../App.css';
 
 import Fetcher from '../Fetcher';
 
-class Register extends Component {
+class Login extends Component {
 
   constructor(props) {
     super(props);
 
     this.state = {
+        username: "",
         email: "",
         password: ""
     }
@@ -25,8 +26,7 @@ class Register extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(JSON.stringify({user: {email: this.state.email, password: this.state.password}}));
-    Fetcher.Auth.login(this.state.username, this.state.email, this.state.password).then(function(response){
+    Fetcher.Auth.login(this.state.email, this.state.password).then(function(response){
       console.log(response);
       if(!response.errors){
         Fetcher.setToken(response.user.token);
@@ -52,16 +52,6 @@ class Register extends Component {
                 </li>
                 <li className="login-register-list-item">
                     <label>
-                        Username:
-                    </label>
-                    <input 
-                        name="username"
-                        type="text" 
-                        value={this.state.username} 
-                        onChange={this.handleChange}/>
-                </li>
-                <li className="login-register-list-item">
-                    <label>
                         Password:
                     </label>
                     <input
@@ -73,7 +63,7 @@ class Register extends Component {
                 <li className="login-register-list-item">
                     <input className="register-button"
                         type="submit"
-                        value="Register" />
+                        value="Login" />
                 </li>
                 </ul>
         </form>
@@ -85,4 +75,4 @@ class Register extends Component {
   }
 }
 
-export default Register;
+export default Login;
