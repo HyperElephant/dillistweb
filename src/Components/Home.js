@@ -10,7 +10,6 @@ class Home extends Component {
               {this.props.wishes.map(function(wish){
                 return <li>{wish}</li>;
               })}
-
           </ul>
         </div>
     );
