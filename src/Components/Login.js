@@ -3,6 +3,7 @@ import '../App.css';
 
 import Fetcher from '../Fetcher';
 
+
 class Login extends Component {
 
   constructor(props) {
@@ -26,10 +27,11 @@ class Login extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    let history = this.props.history;
     Fetcher.Auth.login(this.state.email, this.state.password).then(function(response){
       if(!response.errors){
         Fetcher.setToken(response.user.token);
-        
+        history.push('/home');
       }
     });
   }

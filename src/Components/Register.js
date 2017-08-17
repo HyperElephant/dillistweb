@@ -4,7 +4,6 @@ import '../App.css';
 import Fetcher from '../Fetcher';
 
 class Register extends Component {
-
   constructor(props) {
     super(props);
 
@@ -25,11 +24,13 @@ class Register extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    let history = this.props.history;
     console.log(JSON.stringify({user: {email: this.state.email, password: this.state.password}}));
-    Fetcher.Auth.login(this.state.username, this.state.email, this.state.password).then(function(response){
+    Fetcher.Auth.register(this.state.username, this.state.email, this.state.password).then(function(response){
       console.log(response);
       if(!response.errors){
         Fetcher.setToken(response.user.token);
+        history.push('/home');
       }
     });
   }
