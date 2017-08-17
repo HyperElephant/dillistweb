@@ -12,6 +12,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch({ type: 'LOGIN', payload: Fetcher.Auth.login(email, password) })
 });
 
+
 class Login extends Component {
 
   constructor(props) {
@@ -35,10 +36,11 @@ class Login extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    let history = this.props.history;
     Fetcher.Auth.login(this.state.email, this.state.password).then(function(response){
       if(!response.errors){
         Fetcher.setToken(response.user.token);
-        
+        history.push('/home');
       }
     });
   }
