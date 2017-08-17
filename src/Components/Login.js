@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
 import '../App.css';
-
 import Fetcher from '../Fetcher';
+import { connect } from 'react-redux';
+
+const mapStateToProps = state => ({
+  currentUser: state.common.currentUser,
+});
+
+const mapDispatchToProps = dispatch => ({
+  onSubmit: (email, password) =>
+    dispatch({ type: 'LOGIN', payload: Fetcher.Auth.login(email, password) })
+});
 
 class Login extends Component {
 
@@ -33,7 +42,6 @@ class Login extends Component {
       }
     });
   }
-
 
   render() {
     return (
