@@ -77,9 +77,6 @@ class Register extends Component {
                 </li>
                 </ul>
         </form>
-        <div>
-        Hello {this.state.username}!
-        </div>
       </div>
     );
   }

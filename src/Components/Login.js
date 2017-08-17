@@ -27,9 +27,9 @@ class Login extends Component {
   handleSubmit(event) {
     event.preventDefault();
     Fetcher.Auth.login(this.state.email, this.state.password).then(function(response){
-      console.log(response);
       if(!response.errors){
         Fetcher.setToken(response.user.token);
+        
       }
     });
   }
@@ -67,9 +67,6 @@ class Login extends Component {
                 </li>
                 </ul>
         </form>
-        <div>
-        Hello {this.state.username}!
-        </div>
       </div>
     );
   }
