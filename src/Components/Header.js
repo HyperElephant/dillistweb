@@ -8,9 +8,9 @@ class Header extends Component {
     return (
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Dillist</h2>
+          <h2 className="App-title">Dillist</h2>
           <nav>
-            <ul>
+            <ul className="header-list">
               <li><Link to='/home'>Home</Link></li>
               <li><Link to='/login'>Login</Link></li>
               <li><Link to='/register'>Register</Link></li>

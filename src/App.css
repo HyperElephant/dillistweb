@@ -18,6 +18,10 @@
   font-size: large;
 }
 
+.App-title {
+  text-align: center;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
@@ -40,4 +44,8 @@
 .register-button {
   width: 200px;
   background-color:  gray;
+}
+
+.header-list {
+  list-style: none;
 }
