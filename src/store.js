@@ -1,8 +1,8 @@
 import { createStore, combineReducers } from 'redux';
 
-import common from './reducers/common';
+import common from './Reducers/common';
 
-const reduer = combineReducers({
+const reducer = combineReducers({
     common
 });
 
