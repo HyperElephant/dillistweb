@@ -6,6 +6,9 @@ import Login from './Login';
 import Register from './Register';
 
 class Main extends Component {
+
+    function
+
     render() {
         return (
             <main>

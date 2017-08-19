@@ -37,12 +37,8 @@ class Login extends Component {
   handleSubmit(event) {
     event.preventDefault();
     let history = this.props.history;
-    Fetcher.Auth.login(this.state.email, this.state.password).then(function(response){
-      if(!response.errors){
-        Fetcher.setToken(response.user.token);
-        history.push('/home');
-      }
-    });
+    this.props.onSubmit(this.state.email, this.state.password);
+    history.push('/home');
   }
 
   render() {
@@ -82,4 +78,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

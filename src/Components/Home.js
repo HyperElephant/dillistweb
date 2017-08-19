@@ -10,20 +10,28 @@ const mapStateToProps = state => ({
 class Home extends Component {
   render() {
     function wishes(props) {
-        if(this.currentUser && this.currentUser.wishes){
-            this.currentUser.wishes.map(function(wish){
+        if(props.currentUser && props.currentUser.wishes){
+            props.currentUser.wishes.map(function(wish){
                 return <li>{wish}</li>;
             });
         } else {
             return <p>No Wishes</p>;
         }
     }
+
+    function user(props){
+        if(props.currentUser){
+            return props.currentUser.username;
+        } else {
+            return "";
+        }
+    }
     
     return (
         <div className="home">
-          <h2>Wishes</h2>
+          <h2>Wishes for {user(this.props)}</h2>
           <ul>
-              {wishes}
+              {wishes(this.props)}
           </ul>
         </div>
     );
