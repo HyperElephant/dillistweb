@@ -39,7 +39,13 @@ const Auth = {
         requests.post('/users', {user: {username: username, email: email, password: password}})
 };
 
+const Wishes = {
+    current: () =>
+        requests.get('/wishes')
+}
+
 export default {
     Auth,
+    Wishes,
     setToken: _token => { token = _token; }
 };

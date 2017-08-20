@@ -2,6 +2,7 @@ import fetcher from './fetcher';
 
 const LOGIN = 'LOGIN';
 const REGISTER = 'REGISTER';
+const CURRENT_USER_WISHES = 'CURRENT_USER_WISHES';
 
 export function login(email, password){
     return(
@@ -17,4 +18,11 @@ export function register(username, email, password){
         type: REGISTER, 
         payload: fetcher.Auth.register(username, email, password)
     });
+}
+
+export function getCurrentUserWishes() {
+    return({
+        type: CURRENT_USER_WISHES,
+        payload: fetcher.Wishes.current()
+    })
 }
