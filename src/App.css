@@ -8,8 +8,8 @@
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
+  background-color: #5CBE58;
+  height: 80px;
   padding: 20px;
   color: white;
 }
@@ -20,6 +20,7 @@
 
 .App-title {
   text-align: center;
+  float: left;
 }
 
 @keyframes App-logo-spin {
@@ -48,4 +49,5 @@
 
 .header-list {
   list-style: none;
+  float: right;
 }

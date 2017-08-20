@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from '../logo.svg';
 import '../App.css';
 import { Link } from 'react-router-dom';
 
@@ -28,8 +27,7 @@ class Header extends Component {
   }
     return (
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2 className="App-title">Dillist</h2>
+          <h1 className="App-title">Dillist</h1>
           <nav>
             <ul className="header-list">
               {navs(this.props)}
