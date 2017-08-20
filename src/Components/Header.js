@@ -13,7 +13,10 @@ class Header extends Component {
     function navs(props) {
       if(props.currentUser){
         return(
-          <li><Link to='/home'>Home</Link></li>
+          <div>
+            <li><Link to='/home'>Home</Link></li>
+            <li><Link to='/users'>Users</Link></li>
+          </div>
         );
       } 
       else {

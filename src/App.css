@@ -58,6 +58,8 @@
 
 .addWish {
   float: right;
+  margin-right: 60px;
+  margin-top: 20px;
 }
 
 .add-wish-form-list {
@@ -82,4 +84,8 @@
 .wish-url {
   display: inline-block;
   text-align: right;
+}
+
+.home {
+  margin-left: 60px;
 }

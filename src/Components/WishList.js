@@ -4,13 +4,13 @@ import React from 'react';
 const WishList = props => {
   if (!props.wishList) {
     return (
-      <div className="wishes-view">Loading...</div>
+      <div>Loading...</div>
     );
   }
 
   if (props.wishList.length === 0) {
     return (
-      <div className="wish-view">
+      <div>
         No wishes yet.
       </div>
     );

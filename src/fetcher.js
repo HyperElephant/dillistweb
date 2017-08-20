@@ -60,8 +60,14 @@ const Wishes = {
         requests.delete('/wishes/' + id)
 }
 
+const Users = {
+    all: () =>
+        requests.get('/users')
+};
+
 export default {
     Auth,
     Wishes,
+    Users,
     setToken: _token => { token = _token; }
 };

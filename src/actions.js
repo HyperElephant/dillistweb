@@ -5,6 +5,7 @@ const REGISTER = 'REGISTER';
 const CURRENT_USER_WISHES = 'CURRENT_USER_WISHES';
 const ADD_WISH = "ADD_WISH";
 const REMOVE_WISH = "REMOVE_WISH";
+const GET_USER_LIST = "GET_USER_LIST";
 
 export function login(email, password){
     return(
@@ -43,4 +44,11 @@ export function removeWish(id){
         type: REMOVE_WISH, 
         payload: fetcher.Wishes.removeWish(id)
     });
+}
+
+export function getUserList() {
+    return({
+        type: GET_USER_LIST,
+        payload: fetcher.Users.all()
+    })
 }
