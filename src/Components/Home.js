@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
+import { Link } from 'react-router-dom';
 
 import { getCurrentUserWishes } from '../actions'
 
@@ -45,10 +46,16 @@ class Home extends Component {
 
     return (
         <div className="home">
-            <h2>Wishes for {user(this.props)}</h2>
-            <ul>
-                {wishes(this.props)}
-            </ul>
+            <div className="wishList">
+                <h2>Wishes for {user(this.props)}</h2>
+                <ul>
+                    {wishes(this.props)}
+                </ul>
+            </div>
+            <div className="addWish">
+                <Link to='/addwish'>Add Wish</Link>
+            </div>
+            
         </div>
     );
     }

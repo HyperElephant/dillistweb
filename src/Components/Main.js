@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Home from './Home';
 import Login from './Login';
 import Register from './Register';
+import AddWish from './AddWish';
 
 const mapStateToProps = state => ({
     redirectTo: state.common.redirectTo,
@@ -29,6 +30,7 @@ class Main extends Component {
             <div>
                 <Switch>
                     <Route path='/home' component={Home}/>
+                    <Route path='/addwish' component={AddWish}/>
                     <Route path='/login' component={Login}/>
                     <Route path='/register' component={Register}/>
                 </Switch>

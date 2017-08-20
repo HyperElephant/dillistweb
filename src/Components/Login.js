@@ -42,7 +42,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="Register">
+      <div className="Login">
         <form onSubmit={this.handleSubmit}>
             <ul className="login-register-form-list">
                 <li className="login-register-list-item">

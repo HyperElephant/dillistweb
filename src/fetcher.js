@@ -8,7 +8,8 @@ const requests = {
         method: 'POST',
         headers: {
             'Content-Type' : 'application/json',
-            'XMLHttpRequest': 'XMLHttpRequest'
+            'XMLHttpRequest': 'XMLHttpRequest',
+            'authorization': `Token ${token}`
         },
         body: JSON.stringify(body)
     }).then(function(response){
@@ -41,7 +42,9 @@ const Auth = {
 
 const Wishes = {
     current: () =>
-        requests.get('/wishes')
+        requests.get('/wishes'),
+    addWish: (title, url) =>
+        requests.post('/wishes', {wish: {title: title, url: url}})
 }
 
 export default {

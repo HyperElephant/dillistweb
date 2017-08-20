@@ -3,6 +3,7 @@ import fetcher from './fetcher';
 const LOGIN = 'LOGIN';
 const REGISTER = 'REGISTER';
 const CURRENT_USER_WISHES = 'CURRENT_USER_WISHES';
+const ADD_WISH = "ADD_WISH";
 
 export function login(email, password){
     return(
@@ -25,4 +26,12 @@ export function getCurrentUserWishes() {
         type: CURRENT_USER_WISHES,
         payload: fetcher.Wishes.current()
     })
+}
+
+export function addWish(title, url){
+    return(
+    { 
+        type: ADD_WISH, 
+        payload: fetcher.Wishes.addWish(title, url)
+    });
 }
