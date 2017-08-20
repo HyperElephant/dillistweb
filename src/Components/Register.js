@@ -1,16 +1,27 @@
 import React, { Component } from 'react';
 import '../App.css';
+import { connect } from 'react-redux';
 
-import Fetcher from '../Fetcher';
+import { register } from '../actions'
+
+const mapStateToProps = state => ({
+  currentUser: state.common.currentUser,
+});
+
+const mapDispatchToProps = dispatch => ({
+  onSubmit: (username, email, password) =>
+    dispatch(register(username, email, password))
+});
 
 class Register extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-        email: "",
-        password: ""
-    }
+      username: "",
+      email: "",
+      password: ""
+  }
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -25,16 +36,9 @@ class Register extends Component {
   handleSubmit(event) {
     event.preventDefault();
     let history = this.props.history;
-    console.log(JSON.stringify({user: {email: this.state.email, password: this.state.password}}));
-    Fetcher.Auth.register(this.state.username, this.state.email, this.state.password).then(function(response){
-      console.log(response);
-      if(!response.errors){
-        Fetcher.setToken(response.user.token);
-        history.push('/home');
-      }
-    });
+    this.props.onSubmit(this.state.username, this.state.email, this.state.password);
+    history.push('/home');
   }
-
 
   render() {
     return (
@@ -83,4 +87,4 @@ class Register extends Component {
   }
 }
 
-export default Register;
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

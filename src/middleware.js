@@ -1,4 +1,4 @@
-import Fetcher from './Fetcher';
+import fetcher from './fetcher';
 
 const promiseMiddleware = store => next => action => {
   if (isPromise(action.payload)) {
@@ -28,11 +28,11 @@ const localStorageMiddleware = store => next => action => {
   if (action.type === 'REGISTER' || action.type === 'LOGIN') {
     if(!action.error) {
       window.localStorage.setItem('jwt', action.payload.user.token);
-      Fetcher.setToken(action.payload.user.token);
+      fetcher.setToken(action.payload.user.token);
     }
   } else if (action.type === 'LOGOUT') {
     window.localStorage.setItem('jwt', '');
-    Fetcher.setToken(null);
+    fetcher.setToken(null);
   }
   next(action);
 };

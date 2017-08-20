@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import '../App.css';
-import Fetcher from '../Fetcher';
 import { connect } from 'react-redux';
+
+import { login } from '../actions'
 
 const mapStateToProps = state => ({
   currentUser: state.common.currentUser,
@@ -9,7 +10,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onSubmit: (email, password) =>
-    dispatch({ type: 'LOGIN', payload: Fetcher.Auth.login(email, password) })
+    dispatch(login(email, password))
 });
 
 
