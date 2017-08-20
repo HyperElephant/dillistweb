@@ -28,6 +28,17 @@ const requests = {
             return response.json();
         }).catch(function(error){
             console.log(error);
+        }),
+    delete: (url) => fetch(`${API_ROOT}${url}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type' : 'application/json',
+            'authorization': `Token ${token}`
+        }
+    }).then(function(response){
+            return response.json();
+        }).catch(function(error){
+            console.log(error);
         })
 };
 
@@ -44,7 +55,9 @@ const Wishes = {
     current: () =>
         requests.get('/wishes'),
     addWish: (title, url) =>
-        requests.post('/wishes', {wish: {title: title, url: url}})
+        requests.post('/wishes', {wish: {title: title, url: url}}),
+    removeWish: (id) =>
+        requests.delete('/wishes/' + id)
 }
 
 export default {

@@ -69,3 +69,17 @@
   width: 100px;
   text-align: left;
 }
+
+.wish-view {
+  border:1px solid gray;
+}
+
+.wish-title {
+  display: inline-block;
+  margin-right: 100px;
+}
+
+.wish-url {
+  display: inline-block;
+  text-align: right;
+}

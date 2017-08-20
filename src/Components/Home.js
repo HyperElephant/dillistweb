@@ -6,9 +6,12 @@ import { getCurrentUserWishes } from '../actions'
 
 import { connect } from 'react-redux';
 
+import WishList from './WishList';
+
 const mapStateToProps = state => ({
     currentUser: state.common.currentUser,
-    wishes: state.wishes.wishList
+    wishList: state.wishes.wishList,
+    wishesCount: state.wishes.wishesCount
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -25,39 +28,33 @@ class Home extends Component {
         this.props.onLoad(this.props);
     }
 
+    componentWillReceiveProps(newProps) {
+        if(newProps.wishesCount && newProps.wishesCount !== this.props.wishesCount){
+            this.props.onLoad(newProps);
+        }
+    }
+
     render() {
-    function wishes(props) {
-        if(props.wishes){
-            props.wishes.map(function(wish){
-                return <li>{wish}</li>;
-            });
-        } else {
-            return <p>No Wishes</p>;
+        function user(props){
+            if(props.currentUser){
+                return props.currentUser.username;
+            } else {
+                return "";
+            }
         }
-    }
 
-    function user(props){
-        if(props.currentUser){
-            return props.currentUser.username;
-        } else {
-            return "";
-        }
-    }
-
-    return (
-        <div className="home">
-            <div className="wishList">
-                <h2>Wishes for {user(this.props)}</h2>
-                <ul>
-                    {wishes(this.props)}
-                </ul>
+        return (
+            <div className="home">
+                <div className="wishList">
+                    <h2>Wishes for {user(this.props)}</h2>
+                    <WishList wishList={this.props.wishList}/>
+                </div>
+                <div className="addWish">
+                    <Link to='/addwish'>Add Wish</Link>
+                </div>
+                
             </div>
-            <div className="addWish">
-                <Link to='/addwish'>Add Wish</Link>
-            </div>
-            
-        </div>
-    );
+        );
     }
 }
 

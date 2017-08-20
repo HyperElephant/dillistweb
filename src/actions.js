@@ -4,6 +4,7 @@ const LOGIN = 'LOGIN';
 const REGISTER = 'REGISTER';
 const CURRENT_USER_WISHES = 'CURRENT_USER_WISHES';
 const ADD_WISH = "ADD_WISH";
+const REMOVE_WISH = "REMOVE_WISH";
 
 export function login(email, password){
     return(
@@ -33,5 +34,13 @@ export function addWish(title, url){
     { 
         type: ADD_WISH, 
         payload: fetcher.Wishes.addWish(title, url)
+    });
+}
+
+export function removeWish(id){
+    return(
+    { 
+        type: REMOVE_WISH, 
+        payload: fetcher.Wishes.removeWish(id)
     });
 }
