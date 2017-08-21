@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
 import '../App.css';
 
 class WishView extends Component {
@@ -7,7 +9,9 @@ class WishView extends Component {
         
           return (
             <div className="user-preview">
-              <h4 className="user-username">{user.username}</h4>
+              <Link className="user-username" to={`/user/${user.username}`}>
+                {user.username}
+              </Link>
             </div>
           );
     }
