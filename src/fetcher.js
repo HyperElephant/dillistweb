@@ -57,12 +57,16 @@ const Wishes = {
     addWish: (title, url) =>
         requests.post('/wishes', {wish: {title: title, url: url}}),
     removeWish: (id) =>
-        requests.delete('/wishes/' + id)
+        requests.delete('/wishes/' + id),
+    userWishes: (username) =>
+        requests.get('/wishes/' + username)
 }
 
 const Users = {
     all: () =>
-        requests.get('/users')
+        requests.get('/users'),
+    user: (username) =>
+        requests.get('/users/' + username)
 };
 
 export default {
