@@ -31,7 +31,7 @@ class Header extends Component {
     return (
         <div className="App-header">
           <h1 className="App-title">Dillist</h1>
-          <nav>
+          <nav className="header-nav">
             <ul className="header-list">
               {navs(this.props)}
             </ul>

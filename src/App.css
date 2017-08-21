@@ -49,6 +49,10 @@
 
 .header-list {
   list-style: none;
+  display: inline-block;
+}
+
+.header-nav {
   float: right;
 }
 
@@ -88,4 +92,18 @@
 
 .home {
   margin-left: 60px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  color: gray;
+}
+
+.wish-url {
+  color: #5CBE58;
+  margin-right: 10 px;
 }
