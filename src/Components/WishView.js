@@ -19,7 +19,7 @@ const mapDispatchToProps = dispatch => ({
 class WishView extends Component {
     render(){
         const wish = this.props.wish;
-        const isCurrentUser = this.props;
+        const isCurrentUser = this.props.isCurrentUser;
         function removeButton(isCurrentUser){
           if(isCurrentUser){
             console.log(isCurrentUser);

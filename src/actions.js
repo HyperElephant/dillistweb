@@ -7,6 +7,17 @@ const ADD_WISH = "ADD_WISH";
 const REMOVE_WISH = "REMOVE_WISH";
 const GET_USER_LIST = "GET_USER_LIST";
 const GET_USER_PROFILE = 'GET_USER_PROFILE';
+const APP_LOAD = 'APP_LOAD';
+
+export function appLoad(token) {
+    fetcher.setToken(token);
+    return(
+    { 
+        type: APP_LOAD, 
+        payload: fetcher.Auth.current(),
+        token: token 
+    });
+}
 
 export function login(email, password){
     return(

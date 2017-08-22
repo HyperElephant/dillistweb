@@ -1,11 +1,28 @@
 import React, { Component } from 'react';
 import './App.css';
-import {Route} from 'react-router-dom';
+import {Route, withRouter} from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import { appLoad } from './actions';
 
 import Header from './Components/Header';
 import Main from './Components/Main';
 
+const mapStateToProps = state => ({
+  appLoaded: state.common.appLoaded,
+});
+
+const mapDispatchToProps = dispatch => ({
+  onLoad: (token) =>
+    dispatch(appLoad(token))
+});
+
 class App extends Component {
+  componentWillMount() {
+    const token = window.localStorage.getItem('jwt');
+    this.props.onLoad(token);
+  }
+
   render() {
     return (
       <div>
@@ -16,4 +33,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

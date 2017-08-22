@@ -16,12 +16,14 @@ const WishList = props => {
     );
   }
 
+  const isCurrentUser = props.isCurrentUser;
+
   return (
     <div>
       {
         props.wishList.map((wish, i) => {
           return (
-            <WishView key={i} wish={wish} />
+            <WishView key={i} wish={wish} isCurrentUser={isCurrentUser}/>
           );
         })
       }
