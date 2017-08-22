@@ -46,7 +46,8 @@ class Home extends Component {
         return (
             <div className="home">
                 <div className="wishList">
-                    <h2>Wishes for {user(this.props)}</h2>
+                    <h2>{user(this.props)}</h2>
+                    <h4>Your wishes:</h4>
                     <WishList wishList={this.props.wishList} isCurrentUser={true}/>
                 </div>
                 <div className="addWish">
