@@ -47,7 +47,7 @@ class Home extends Component {
             <div className="home">
                 <div className="wishList">
                     <h2>Wishes for {user(this.props)}</h2>
-                    <WishList wishList={this.props.wishList}/>
+                    <WishList wishList={this.props.wishList} isCurrentUser={true}/>
                 </div>
                 <div className="addWish">
                     <Link to='/addwish'>Add Wish</Link>

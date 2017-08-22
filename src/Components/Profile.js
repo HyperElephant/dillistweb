@@ -10,17 +10,19 @@ import WishList from './WishList';
 
 const mapStateToProps = state => ({
     currentUser: state.common.currentUser,
-    wishList: state.common.userWishList,
+    wishList: state.wishes.wishList,
+    wishesCount: state.wishes.wishesCount,
     user: state.users.userProfile
 });
 
 const mapDispatchToProps = dispatch => ({
     onLoad: (props) => {
-        console.log(props);
         if(props.match.params.username){
-            dispatch(getUserProfile(props.match.params.username));
-            dispatch(getUserWishes(props.match.params.username));              
+            dispatch(getUserProfile(props.match.params.username));             
         }
+    },
+    onUserLoaded: (username) => {
+        dispatch(getUserWishes(username)); 
     }
 });
 
@@ -28,6 +30,12 @@ class Profile extends Component {
 
     componentWillMount() {
         this.props.onLoad(this.props);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.user){
+            this.props.onUserLoaded(nextProps.user.username);
+        }
     }
 
     render() {
@@ -43,7 +51,7 @@ class Profile extends Component {
             <div className="home">
                 <div className="wishList">
                     <h2>Wishes for {user(this.props)}</h2>
-                    <WishList wishList={this.props.wishList}/>
+                    <WishList wishList={this.props.wishList} isCurrentUser={false}/>
                 </div>
             </div>
         );

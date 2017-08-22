@@ -1,7 +1,6 @@
 import fetcher from './fetcher';
 
 const promiseMiddleware = store => next => action => {
-  console.log(action);
   if (isPromise(action.payload)) {
     action.payload.then(
       res => {

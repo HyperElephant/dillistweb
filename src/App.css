@@ -94,12 +94,12 @@
   margin-left: 60px;
 }
 
-a {
+.header-list a {
   text-decoration: none;
   color: white;
 }
 
-a:hover {
+.header-list a:hover {
   color: gray;
 }
 

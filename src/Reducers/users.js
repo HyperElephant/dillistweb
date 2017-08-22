@@ -9,7 +9,7 @@ export default (state = {}, action) => {
         case 'GET_USER_PROFILE':
             return {
                 ...state,
-                userProfile: action.payload.user
+                userProfile: action.payload.profile
             }
         default:
             break;

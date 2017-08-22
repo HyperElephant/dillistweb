@@ -6,11 +6,6 @@ export default (state = {}, action) => {
             wishList: action.payload.wishes,
             wishesCount: action.payload.wishesCount
             };
-        case 'REMOVE_WISH':
-            return {
-                ...state,
-                wishesCount: state.wishesCount - 1
-            }
         default:
             break;
 
