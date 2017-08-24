@@ -53,7 +53,6 @@ class Home extends Component {
                 <div className="addWish">
                     <Link to='/addwish'>Add Wish</Link>
                 </div>
-                
             </div>
         );
     }

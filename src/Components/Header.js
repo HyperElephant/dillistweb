@@ -3,9 +3,17 @@ import '../App.css';
 import { Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
+import { logout } from '../actions';
 
 const mapStateToProps = state => ({
     currentUser: state.common.currentUser
+});
+
+const mapDispatchToProps = dispatch => ({
+  onLogout: () => {
+    console.log("Logout");
+    dispatch(logout())
+  }
 });
 
 class Header extends Component {
@@ -16,6 +24,11 @@ class Header extends Component {
           <div>
             <li><Link to='/home'>Home</Link></li>
             <li><Link to='/users'>Users</Link></li>
+            <li>
+              <button onClick= {() => props.onLogout() }>
+                Logout
+              </button>
+            </li>
           </div>
         );
       } 
@@ -41,4 +54,4 @@ class Header extends Component {
   }
 }
 
-export default connect(mapStateToProps, {})(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
