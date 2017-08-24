@@ -40,7 +40,9 @@ class Header extends Component {
           </div>
         );
       }
-  }
+    } 
+
+    
     return (
         <div className="App-header">
           <h1 className="App-title">Dillist</h1>

@@ -8,7 +8,6 @@ import Register from './Register';
 import AddWish from './AddWish';
 import UserList from './UserList';
 import Profile from './Profile';
-import Welcome from './Welcome';
 
 const mapStateToProps = state => ({
     redirectTo: state.common.redirectTo,
@@ -32,7 +31,6 @@ class Main extends Component {
         return (
             <div>
                 <Switch>
-                    <Route exact path='/' component={Welcome}/>
                     <Route exact path='/home' component={Home}/>
                     <Route path='/addwish' component={AddWish}/>
                     <Route path='/login' component={Login}/>

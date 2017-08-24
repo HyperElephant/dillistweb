@@ -35,6 +35,30 @@ class Home extends Component {
     }
 
     render() {
+        function homeBody(props){
+            if (props.currentUser) {
+                return (
+                    <div className="home">
+                    <div className="wishList">
+                        <h2>{user(props)}</h2>
+                        <h4>Your wishes:</h4>
+                        <WishList wishList={props.wishList} isCurrentUser={true}/>
+                    </div>
+                    <div className="addWish">
+                        <Link to='/addwish'>Add Wish</Link>
+                    </div>
+                </div>
+                );
+            }
+            else {
+                return (
+                    <div className="home">
+                        <h2>Welcome to Dillist.</h2>
+                    </div>
+                );
+            }
+        }
+
         function user(props){
             if(props.currentUser){
                 return props.currentUser.username;
@@ -44,16 +68,7 @@ class Home extends Component {
         }
 
         return (
-            <div className="home">
-                <div className="wishList">
-                    <h2>{user(this.props)}</h2>
-                    <h4>Your wishes:</h4>
-                    <WishList wishList={this.props.wishList} isCurrentUser={true}/>
-                </div>
-                <div className="addWish">
-                    <Link to='/addwish'>Add Wish</Link>
-                </div>
-            </div>
+            homeBody(this.props)
         );
     }
 }
