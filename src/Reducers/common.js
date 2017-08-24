@@ -8,7 +8,7 @@ import {
   GET_USER_PROFILE,
   APP_LOAD,
   LOGOUT,
-} from '.actions';
+} from '../actions';
 
 const defaultState = {
     token: null,
