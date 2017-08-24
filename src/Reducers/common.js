@@ -1,11 +1,6 @@
 import {
   LOGIN,
   REGISTER,
-  USER_WISHES,
-  ADD_WISH,
-  REMOVE_WISH,
-  GET_USER_LIST,
-  GET_USER_PROFILE,
   APP_LOAD,
   LOGOUT,
 } from '../actions';
