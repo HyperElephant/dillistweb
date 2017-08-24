@@ -54,7 +54,7 @@ class UserList extends Component {
               <h2>Users:</h2>
               {
                 props.userList.map((user, i) => {
-                  if(user.username !== this.props.currentUser.username){
+                  if(this.props.currentUser && user.username !== this.props.currentUser.username){
                     return (
                       <UserPreview key={i} user={user} />
                     );
