@@ -103,6 +103,18 @@
   color: gray;
 }
 
+.header-list button {
+  text-decoration: none;
+  color: white;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.header-list button:hover {
+  color: gray;
+}
+
 .wish-url {
   color: #5CBE58;
   margin-right: 10 px;
