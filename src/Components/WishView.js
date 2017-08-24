@@ -11,7 +11,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     removeWish: (id, author) => {
       dispatch(removeWish(id));
-      dispatch(getUserWishes(author));    
+      dispatch(getUserWishes());    
     }
       
   });
@@ -20,12 +20,12 @@ class WishView extends Component {
     render(){
         const wish = this.props.wish;
         const isCurrentUser = this.props.isCurrentUser;
+        const removeWish = this.props.removeWish;
         function removeButton(isCurrentUser){
           if(isCurrentUser){
-            console.log(isCurrentUser);
             return (
-            <button onClick={() => this.props.removeWish(wish.id, wish.author)} 
-            className="wish-remove-button">Remove</button>);            
+            <button onClick={() => removeWish(wish.id)} 
+            className="wish-remove-button">&#10006;</button>);            
             
           }
         }

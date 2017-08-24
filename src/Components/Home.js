@@ -29,7 +29,7 @@ class Home extends Component {
     }
 
     componentWillReceiveProps(newProps) {
-        if(newProps.wishesCount && newProps.wishesCount !== this.props.wishesCount){
+        if(newProps.currentUser){
             this.props.onLoad(newProps);
         }
     }

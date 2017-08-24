@@ -27,6 +27,12 @@ class UserList extends Component {
         this.props.onLoad(this.props);
     }
 
+    componentWillReceiveProps(nextProps){
+      if(nextProps.currentUser){
+        this.props.onLoad(nextProps);
+      }
+    }
+
     render() {
         let props = this.props;
         if (!props.userList) {
@@ -44,12 +50,19 @@ class UserList extends Component {
           }
         
           return (
-            <div>
+            <div className="user-list">
+              <h2>Users:</h2>
               {
                 props.userList.map((user, i) => {
-                  return (
-                    <UserPreview key={i} user={user} />
-                  );
+                  if(user.username !== this.props.currentUser.username){
+                    return (
+                      <UserPreview key={i} user={user} />
+                    );
+                  }
+                  else {
+                    return null;
+                  }
+                  
                 })
               }
             </div>

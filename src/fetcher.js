@@ -22,6 +22,7 @@ const requests = {
         method: 'GET',
         headers: {
             'Content-Type' : 'application/json',
+            'XMLHttpRequest': 'XMLHttpRequest',
             'authorization': `Token ${token}`
         }
     }).then(function(response){
@@ -33,6 +34,7 @@ const requests = {
         method: 'DELETE',
         headers: {
             'Content-Type' : 'application/json',
+            'XMLHttpRequest': 'XMLHttpRequest',
             'authorization': `Token ${token}`
         }
     }).then(function(response){
