@@ -1,6 +1,6 @@
 import fetcher from './fetcher';
 
-const LOGIN = 'LOGIN';
+const LOGIN= 'LOGIN';
 const REGISTER = 'REGISTER';
 const USER_WISHES = 'USER_WISHES';
 const ADD_WISH = "ADD_WISH";
@@ -8,6 +8,7 @@ const REMOVE_WISH = "REMOVE_WISH";
 const GET_USER_LIST = "GET_USER_LIST";
 const GET_USER_PROFILE = 'GET_USER_PROFILE';
 const APP_LOAD = 'APP_LOAD';
+const LOGOUT = 'LOGOUT';
 
 export function appLoad(token) {
     fetcher.setToken(token);
@@ -70,4 +71,22 @@ export function getUserProfile(username) {
         type: GET_USER_PROFILE,
         payload: fetcher.Users.user(username)
     })
+}
+
+export function logout() {
+    return ({
+        type: LOGOUT
+    })
+}
+
+export {
+    LOGIN,
+    REGISTER,
+    USER_WISHES,
+    ADD_WISH,
+    REMOVE_WISH,
+    GET_USER_LIST,
+    GET_USER_PROFILE,
+    APP_LOAD,
+    LOGOUT,
 }

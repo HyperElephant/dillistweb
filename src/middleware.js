@@ -1,5 +1,7 @@
 import fetcher from './fetcher';
 
+import { REGISTER, LOGIN, LOGOUT } from './actions';
+
 const promiseMiddleware = store => next => action => {
   if (isPromise(action.payload)) {
     action.payload.then(
@@ -25,12 +27,12 @@ function isPromise(v) {
 }
 
 const localStorageMiddleware = store => next => action => {
-  if (action.type === 'REGISTER' || action.type === 'LOGIN') {
+  if (action.type === REGISTER || action.type === LOGIN) {
     if(!action.error) {
       window.localStorage.setItem('jwt', action.payload.user.token);
       fetcher.setToken(action.payload.user.token);
     }
-  } else if (action.type === 'LOGOUT') {
+  } else if (action.type === LOGOUT) {
     window.localStorage.setItem('jwt', '');
     fetcher.setToken(null);
   }
