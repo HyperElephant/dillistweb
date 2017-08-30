@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import '../App.css';
 
-class WishView extends Component {
+class UserPreview extends Component {
     render(){
         const user = this.props.user;
         
@@ -18,4 +18,4 @@ class WishView extends Component {
   
 }
 
-export default WishView;
+export default UserPreview;

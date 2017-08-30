@@ -9,6 +9,7 @@ const GET_USER_LIST = "GET_USER_LIST";
 const GET_USER_PROFILE = 'GET_USER_PROFILE';
 const APP_LOAD = 'APP_LOAD';
 const LOGOUT = 'LOGOUT';
+const GET_FRIENDS = 'GET_FRIENDS';
 
 export function appLoad(token) {
     fetcher.setToken(token);
@@ -76,6 +77,13 @@ export function getUserProfile(username) {
 export function logout() {
     return ({
         type: LOGOUT
+    })
+}
+
+export function getFriends() {
+    return ({
+        type: GET_FRIENDS,
+        payload: fetcher.Users.friends()
     })
 }
 

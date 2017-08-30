@@ -68,7 +68,9 @@ const Users = {
     all: () =>
         requests.get('/users'),
     user: (username) =>
-        requests.get('/profiles/' + username)
+        requests.get('/profiles/' + username),
+    friends: () =>
+        requests.get('/friends')
 };
 
 export default {

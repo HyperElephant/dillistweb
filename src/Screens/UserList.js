@@ -5,7 +5,7 @@ import { getUserList } from '../actions'
 
 import { connect } from 'react-redux';
 
-import UserPreview from './UserPreview';
+import UserPreview from '../Components/UserPreview';
 
 const mapStateToProps = state => ({
     currentUser: state.common.currentUser,

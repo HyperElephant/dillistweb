@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import {Switch, Route} from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import Home from './Home';
-import Login from './Login';
-import Register from './Register';
-import AddWish from './AddWish';
-import UserList from './UserList';
+import Home from '../Screens/Home';
+import Login from '../Screens/Login';
+import Register from '../Screens/Register';
+import AddWish from '../Screens/AddWish';
+import UserList from '../Screens/UserList';
 import Profile from './Profile';
+import Friends from '../Screens/Friends';
 
 const mapStateToProps = state => ({
     redirectTo: state.common.redirectTo,
@@ -37,6 +38,7 @@ class Main extends Component {
                     <Route path='/register' component={Register}/>
                     <Route exact path='/users' component={UserList}/>
                     <Route path="/user/:username" component={Profile} />
+                    <Route path='/friends' component={Friends}/>
                 </Switch>
             </div>
         );

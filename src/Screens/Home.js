@@ -6,7 +6,7 @@ import { getUserWishes } from '../actions'
 
 import { connect } from 'react-redux';
 
-import WishList from './WishList';
+import WishList from '../Components/WishList';
 
 const mapStateToProps = state => ({
     currentUser: state.common.currentUser,
