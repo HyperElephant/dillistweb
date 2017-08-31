@@ -24,6 +24,7 @@ class Header extends Component {
           <div>
             <li><Link to='/home'>Home</Link></li>
             <li><Link to='/users'>Users</Link></li>
+            <li><Link to='/friends'>Friends</Link></li>
             <li>
               <button className="logout-button" onClick= {() => props.onLogout() }>
                 Logout

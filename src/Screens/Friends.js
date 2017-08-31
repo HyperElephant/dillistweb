@@ -49,10 +49,10 @@ class Friends extends Component {
 
         return (
             <div className="user-list">
-            <h2>Friends:</h2>
-            {
-                friends(this.props)
-            }
+                <h2>Friends:</h2>
+                {
+                    friends(this.props)
+                }
             </div>
         );
     }
