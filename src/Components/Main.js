@@ -6,7 +6,7 @@ import Home from '../Screens/Home';
 import Login from '../Screens/Login';
 import Register from '../Screens/Register';
 import AddWish from '../Screens/AddWish';
-import UserList from '../Screens/UserList';
+import AllUsers from '../Screens/AllUsers';
 import Profile from './Profile';
 import Friends from '../Screens/Friends';
 
@@ -36,7 +36,7 @@ class Main extends Component {
                     <Route path='/addwish' component={AddWish}/>
                     <Route path='/login' component={Login}/>
                     <Route path='/register' component={Register}/>
-                    <Route exact path='/users' component={UserList}/>
+                    <Route exact path='/users' component={AllUsers}/>
                     <Route path="/user/:username" component={Profile} />
                     <Route path='/friends' component={Friends}/>
                 </Switch>

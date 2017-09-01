@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getFriends } from '../actions';
 
-import UserPreview from '../Components/UserPreview';
+import UserList from '../Components/UserList';
 
 import '../App.css';
 
@@ -31,28 +31,12 @@ class Friends extends Component {
     }
 
     render() {
-        function friends(props) {
-            if (!props.friends) {
-                return (<div>Loading...</div>);
-            }
-            else if (props.friends.length === 0) {
-                return (<div>No friends... :(</div>);
-            }
-            else {
-                return(
-                    props.friends.map((user, i) => {
-                        return (<UserPreview key={i} user={user}/>)
-                    })
-                )
-            }
-        }
+        const friends = this.props.friends;
 
         return (
             <div className="user-list">
                 <h2>Friends:</h2>
-                {
-                    friends(this.props)
-                }
+                <UserList userList={friends} noUsersString={"No friends... :("}/>
             </div>
         );
     }

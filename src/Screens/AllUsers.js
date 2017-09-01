@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import '../App.css';
 
+import UserList from '../Components/UserList';
+
 import { getUserList } from '../actions'
 
 import { connect } from 'react-redux';
-
-import UserPreview from '../Components/UserPreview';
 
 const mapStateToProps = state => ({
     currentUser: state.common.currentUser,
@@ -21,7 +21,7 @@ const mapDispatchToProps = dispatch => ({
     }
 });
 
-class UserList extends Component {
+class AllUsers extends Component {
 
   componentWillMount() {
       this.props.onLoad(this.props);
@@ -34,38 +34,30 @@ class UserList extends Component {
   }
 
   render() {
-    function users(props) {
-      if (!props.userList) {
-        return (<div>Loading...</div>);
+    function getUsers(props) {
+      if (props.userList) {
+        return props.userList.map((user, i) => {
+          if (user !== props.currentUser) {
+            return user;
+          }
+          else {
+            return null;
+          }
+        })
       }
-      else if (props.userList.length === 0) {
-        return (<div>No users.</div>);
-      }
-      else {
-        return(
-          props.userList.map((user, i) => {
-            if(!props.currentUser && user.username !== props.currentUser.username){
-              return (
-                <UserPreview key={i} user={user} />
-              );
-            }
-            else {
-              return null;
-            }
-          })
-        )
+      else{
+        return null;
       }
     }
 
+    const props = this.props;
     return (
       <div className="user-list">
         <h2>Users:</h2>
-        <div>{
-          users(this.props)
-        }</div>
+        <UserList userList={getUsers(props)}/>
       </div>
     );
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserList);
+export default connect(mapStateToProps, mapDispatchToProps)(AllUsers);

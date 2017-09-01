@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import '../App.css';
 
-class UserPreview extends Component {
+class UserView extends Component {
     render(){
         const user = this.props.user;
         
@@ -18,4 +18,4 @@ class UserPreview extends Component {
   
 }
 
-export default UserPreview;
+export default UserView;
