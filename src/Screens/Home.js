@@ -28,9 +28,9 @@ class Home extends Component {
         this.props.onLoad(this.props);
     }
 
-    componentWillReceiveProps(newProps) {
-        if(newProps.currentUser){
-            this.props.onLoad(newProps);
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.currentUser !== this.props.currentUser){
+            this.props.onLoad(nextProps);
         }
     }
 

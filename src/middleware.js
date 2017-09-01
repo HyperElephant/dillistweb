@@ -3,6 +3,7 @@ import fetcher from './fetcher';
 import { REGISTER, LOGIN, LOGOUT } from './actions';
 
 const promiseMiddleware = store => next => action => {
+  console.log(action);
   if (isPromise(action.payload)) {
     action.payload.then(
       res => {

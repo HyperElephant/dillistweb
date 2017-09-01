@@ -28,7 +28,7 @@ class AllUsers extends Component {
   }
 
   componentWillReceiveProps(nextProps){
-    if(nextProps.currentUser){
+    if(nextProps.currentUser !== this.props.currentUser){
       this.props.onLoad(nextProps);
     }
   }

@@ -24,10 +24,10 @@ class Friends extends Component {
         this.props.onLoad(this.props);
     }
 
-    componentWillRecieveProps(newProps) {
-        if (newProps.currentUser) {
-            this.props.onLoad(newProps);
-        }
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.currentUser !== this.props.currentUser){
+            this.props.onLoad(nextProps);
+          }
     }
 
     render() {

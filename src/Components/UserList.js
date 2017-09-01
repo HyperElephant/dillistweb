@@ -6,8 +6,8 @@ const defaultNoUsersString = "No users to display.";
 class UserList extends Component {
     render() {
         function getNoUsersString(props) {
-            if (this.props.noUsersString) {
-                return this.props.noUsersString;
+            if (props.noUsersString) {
+                return props.noUsersString;
             }
             else {
                 console.log("Using defaultNoUsersString: " + defaultNoUsersString);
@@ -15,28 +15,38 @@ class UserList extends Component {
             }
         }
 
-        const userList = this.props.userList;
+        function body(props){
+            const userList = props.userList;
+            if (!userList) {
+                return (
+                    <div>Loading...</div>
+                );
+            }
+            else if (!userList.length === 0) {
+                return (
+                    <div>{getNoUsersString(props)}</div>
+                );
+            }
+            else {
+                return(
+                    <div>
+                    {
+                    userList.map((user, i) => {
+                        return (<UserView key={i} user={user} />);
+                    })
+                    }
+                    </div>
 
-        if (!userList) {
-            console.log("No userlist.");
-            return (
-                <div>Loading...</div>
-            );
+                );
+                
+            }
         }
-        else if (!userList.length === 0) {
-            console.log("No users in userlist.");
-            return (
-                <div>{getNoUsersString(this.props)}</div>
-            );
-        }
-        else {
-            console.log("User in userlist.");
-            return(
-                userList.map((user, i) => {
-                    return (<UserView user={user} />);
-                })
-            )
-        }
+
+        return(
+            <div>
+                {body(this.props)}
+            </div>
+        );
     }
 }
 
