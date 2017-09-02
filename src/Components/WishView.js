@@ -11,7 +11,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     removeWish: (id, author) => {
       dispatch(removeWish(id));
-      dispatch(getUserWishes());    
+      dispatch(getUserWishes()); 
     }
       
   });
