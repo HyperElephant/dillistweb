@@ -23,11 +23,6 @@
   float: left;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
 .login-register-form-list {
   list-style: none;
 }
@@ -60,10 +55,19 @@
   float: left;
 }
 
-.addWish {
+.add-wish {
   float: right;
   margin-right: 60px;
   margin-top: 20px;
+}
+
+.add-wish a{
+  text-decoration: none;
+  color: #5CBE58;
+}
+
+.add-wish a:hover {
+  color: darkgreen;
 }
 
 .add-wish-form-list {
@@ -78,6 +82,10 @@
 
 .wish-view {
   border-bottom:1px solid gray;
+}
+
+.wish-view a:hover {
+  color: darkgreen;
 }
 
 .wish-title {
@@ -109,10 +117,12 @@
   padding: 0;
   border: none;
   background: none;
+  font-size: medium;
 }
 
 .header-list button:hover {
   color: gray;
+  cursor: pointer;
 }
 
 .wish-url {
@@ -122,5 +132,10 @@
 
 .user-list {
   margin-left: 60px;
+}
+
+.wish-remove-button:hover {
+  cursor: pointer;
+  background: red;
 }
 
