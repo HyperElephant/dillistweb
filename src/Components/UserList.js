@@ -10,7 +10,6 @@ class UserList extends Component {
                 return props.noUsersString;
             }
             else {
-                console.log("Using defaultNoUsersString: " + defaultNoUsersString);
                 return defaultNoUsersString;
             }
         }
@@ -22,7 +21,7 @@ class UserList extends Component {
                     <div>Loading...</div>
                 );
             }
-            else if (!userList.length === 0) {
+            else if (userList.length === 0) {
                 return (
                     <div>{getNoUsersString(props)}</div>
                 );

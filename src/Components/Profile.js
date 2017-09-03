@@ -12,7 +12,7 @@ const mapStateToProps = state => ({
     currentUser: state.common.currentUser,
     wishList: state.wishes.wishList,
     wishesCount: state.wishes.wishesCount,
-    user: state.users.userProfile
+    user: state.users.userProfile,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -33,7 +33,7 @@ class Profile extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if(nextProps.user){
+        if(nextProps.user !== this.props.user){
             this.props.onUserLoaded(nextProps.user.username);
         }
     }
@@ -47,10 +47,20 @@ class Profile extends Component {
             }
         }
 
+        function displayIsFriend(props) {
+            if (props.user && props.user.isFriend) {
+                return <div>{user(props)} is your friend!</div>
+            }
+            else {
+                return null;
+            } 
+        }
+
         return (
             <div className="home">
                 <div className="wishList">
                     <h2>Wishes for {user(this.props)}</h2>
+                    {displayIsFriend(this.props)}
                     <WishList wishList={this.props.wishList} isCurrentUser={false}/>
                 </div>
             </div>

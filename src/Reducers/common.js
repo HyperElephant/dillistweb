@@ -7,7 +7,8 @@ import {
 
 const defaultState = {
     token: null,
-    currentUser: null
+    currentUser: null,
+    friends: null,
 }
 
 export default (state = defaultState, action) => {
