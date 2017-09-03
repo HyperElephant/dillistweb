@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
 
-import { getUserWishes, getUserProfile } from '../actions'
+import { getUserWishes, getUserProfile, addFriend, removeFriend } from '../actions'
 
 import { connect } from 'react-redux';
 
@@ -23,6 +23,12 @@ const mapDispatchToProps = dispatch => ({
     },
     onUserLoaded: (username) => {
         dispatch(getUserWishes(username)); 
+    },
+    addFriend: (username) => {
+        dispatch(addFriend(username));
+    },
+    removeFriend: (username) => {
+        dispatch(removeFriend(username));
     }
 });
 
@@ -47,7 +53,7 @@ class Profile extends Component {
             }
         }
 
-        function displayIsFriend(props) {
+        function isFriend(props) {
             if (props.user && props.user.isFriend) {
                 return <div>{user(props)} is your friend!</div>
             }
@@ -56,11 +62,28 @@ class Profile extends Component {
             } 
         }
 
+        function friendButton(props) {
+            if (!props.user) {
+                return null;
+            }
+            else if (props.user.isFriend) {
+                return (
+                    <button onClick={() => props.removeFriend(props.user.username)}>Remove Friend</button>
+                )
+            }
+            else {
+                return (
+                    <button onClick={() => props.addFriend(props.user.username)}>Add Friend</button>
+                )
+            }
+        }
+
         return (
             <div className="home">
                 <div className="wishList">
                     <h2>Wishes for {user(this.props)}</h2>
-                    {displayIsFriend(this.props)}
+                    {isFriend(this.props)}
+                    {friendButton(this.props)}
                     <WishList wishList={this.props.wishList} isCurrentUser={false}/>
                 </div>
             </div>

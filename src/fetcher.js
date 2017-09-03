@@ -70,7 +70,11 @@ const Users = {
     user: (username) =>
         requests.get('/profiles/' + username),
     friends: () =>
-        requests.get('/friends')
+        requests.get('/friends'),
+    addFriend: (username) =>
+        requests.post('/profiles/' + username + '/friend'),
+    removeFriend: (username) =>
+        requests.delete('/profiles/' + username + '/friend'),
 };
 
 export default {

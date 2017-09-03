@@ -10,6 +10,8 @@ const GET_USER_PROFILE = 'GET_USER_PROFILE';
 const APP_LOAD = 'APP_LOAD';
 const LOGOUT = 'LOGOUT';
 const GET_FRIENDS = 'GET_FRIENDS';
+const ADD_FRIEND = 'ADD_FRIEND';
+const REMOVE_FRIEND = 'REMOVE_FRIEND';
 
 export function appLoad(token) {
     fetcher.setToken(token);
@@ -84,6 +86,20 @@ export function getFriends() {
     return ({
         type: GET_FRIENDS,
         payload: fetcher.Users.friends()
+    })
+}
+
+export function addFriend(username) {
+    return ({
+        type: ADD_FRIEND,
+        payload: fetcher.Users.addFriend(username)
+    })
+}
+
+export function removeFriend(username) {
+    return ({
+        type: REMOVE_FRIEND,
+        payload: fetcher.Users.removeFriend(username)
     })
 }
 
