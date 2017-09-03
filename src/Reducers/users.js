@@ -10,7 +10,12 @@ export default (state = {}, action) => {
             return {
                 ...state,
                 userProfile: action.payload.profile
-            }
+            };
+        case 'GET_FRIENDS':
+            return {
+                ...state,
+                friends: action.payload.friends
+            };
         default:
             break;
 

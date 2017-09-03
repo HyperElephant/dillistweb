@@ -7,7 +7,8 @@ import UserList from '../Components/UserList';
 import '../App.css';
 
 const mapStateToProps = state => ({
-    friends: state.common.friends,
+    currentUser: state.common.currentUser,
+    friends: state.users.friends,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -27,7 +28,7 @@ class Friends extends Component {
     componentWillReceiveProps(nextProps) {
         if(nextProps.currentUser !== this.props.currentUser){
             this.props.onLoad(nextProps);
-          }
+        }
     }
 
     render() {

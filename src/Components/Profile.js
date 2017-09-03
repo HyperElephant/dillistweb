@@ -33,7 +33,7 @@ class Profile extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if(nextProps.user){
+        if(nextProps.user !== this.props.user){
             this.props.onUserLoaded(nextProps.user.username);
         }
     }
