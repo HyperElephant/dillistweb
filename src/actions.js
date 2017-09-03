@@ -10,13 +10,10 @@ const GET_USER_PROFILE = 'GET_USER_PROFILE';
 const APP_LOAD = 'APP_LOAD';
 const LOGOUT = 'LOGOUT';
 const GET_FRIENDS = 'GET_FRIENDS';
-<<<<<<< HEAD
 const ADD_FRIEND = 'ADD_FRIEND';
 const REMOVE_FRIEND = 'REMOVE_FRIEND';
-=======
 const CLAIM_WISH = 'CLAIM_WISH';
 const UNCLAIM_WISH = 'UNCLAIM_WISH';
->>>>>>> d3a88a1c93b3be7f613b0b1d8e9631e9530afb93
 
 export function appLoad(token) {
     fetcher.setToken(token);
