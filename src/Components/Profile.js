@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
 
-import { getUserWishes, getUserProfile } from '../actions'
+import { getUserWishes, getUserProfile, getFriends } from '../actions'
 
 import { connect } from 'react-redux';
 
@@ -12,7 +12,7 @@ const mapStateToProps = state => ({
     currentUser: state.common.currentUser,
     wishList: state.wishes.wishList,
     wishesCount: state.wishes.wishesCount,
-    user: state.users.userProfile
+    user: state.users.userProfile,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -47,10 +47,22 @@ class Profile extends Component {
             }
         }
 
+        function displayIsFriend(props) {
+            if (props.user.isFriend) {
+                console.log(user(props) + " is friends with " + props.currentUser.username);
+                return <div>{user(props)} is your friend!</div>
+            }
+            else {
+                console.log(user(props) + " is not friends with " + props.currentUser.username);
+                return null;
+            } 
+        }
+
         return (
             <div className="home">
                 <div className="wishList">
                     <h2>Wishes for {user(this.props)}</h2>
+                    {displayIsFriend(this.props)}
                     <WishList wishList={this.props.wishList} isCurrentUser={false}/>
                 </div>
             </div>
