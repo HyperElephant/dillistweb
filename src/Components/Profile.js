@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
 
-import { getUserWishes, getUserProfile, getFriends } from '../actions'
+import { getUserWishes, getUserProfile } from '../actions'
 
 import { connect } from 'react-redux';
 
@@ -48,12 +48,10 @@ class Profile extends Component {
         }
 
         function displayIsFriend(props) {
-            if (props.user.isFriend) {
-                console.log(user(props) + " is friends with " + props.currentUser.username);
+            if (props.user && props.user.isFriend) {
                 return <div>{user(props)} is your friend!</div>
             }
             else {
-                console.log(user(props) + " is not friends with " + props.currentUser.username);
                 return null;
             } 
         }
