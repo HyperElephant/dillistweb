@@ -65,7 +65,7 @@ const Wishes = {
     claimWish: (id) =>
         requests.post('/wishes/' + id + '/claim'),
     unclaimWish: (id) =>
-        requests.post('/wishes/' + id + '/claim')
+        requests.post('/wishes/' + id + '/unclaim')
 }
 
 const Users = {
