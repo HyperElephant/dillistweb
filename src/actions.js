@@ -10,6 +10,8 @@ const GET_USER_PROFILE = 'GET_USER_PROFILE';
 const APP_LOAD = 'APP_LOAD';
 const LOGOUT = 'LOGOUT';
 const GET_FRIENDS = 'GET_FRIENDS';
+const CLAIM_WISH = 'CLAIM_WISH';
+const UNCLAIM_WISH = 'UNCLAIM_WISH';
 
 export function appLoad(token) {
     fetcher.setToken(token);
@@ -84,6 +86,20 @@ export function getFriends() {
     return ({
         type: GET_FRIENDS,
         payload: fetcher.Users.friends()
+    })
+}
+
+export function claimWish(id) {
+    return ({
+        type: CLAIM_WISH,
+        payload: fetcher.Wishes.claimWish(id)
+    })
+}
+
+export function unclaimWish(id) {
+    return ({
+        type: UNCLAIM_WISH,
+        payload: fetcher.Wishes.unclaimWish(id)
     })
 }
 
