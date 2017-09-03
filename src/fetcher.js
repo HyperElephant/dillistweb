@@ -61,11 +61,13 @@ const Wishes = {
     removeWish: (id) =>
         requests.delete('/wishes/' + id),
     userWishes: (username) =>
-        requests.get('/wishes/' + username),
+        requests.get('/wishes/user/' + username),
     claimWish: (id) =>
         requests.post('/wishes/' + id + '/claim'),
     unclaimWish: (id) =>
-        requests.post('/wishes/' + id + '/unclaim')
+        requests.post('/wishes/' + id + '/unclaim'),
+    claimedWishes : () =>
+        requests.get('/wishes/claimed')
 }
 
 const Users = {

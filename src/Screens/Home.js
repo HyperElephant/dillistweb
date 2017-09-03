@@ -2,27 +2,44 @@ import React, { Component } from 'react';
 import '../App.css';
 import { Link } from 'react-router-dom';
 
-import { getUserWishes } from '../actions'
+import { getUserWishes, getClaimedWishes } from '../actions'
 
 import { connect } from 'react-redux';
 
 import WishList from '../Components/WishList';
 
+
+const CLAIMED_WISHES = "CLAIMED_WISHES";
+const WISHES = "WISHES";
+
 const mapStateToProps = state => ({
     currentUser: state.common.currentUser,
     wishList: state.wishes.wishList,
-    wishesCount: state.wishes.wishesCount
+    wishesCount: state.wishes.wishesCount,
+    claimedWishes: state.wishes.claimedWishes,
+    claimedWishesCount: state.wishes.claimedWishesCount
 });
 
 const mapDispatchToProps = dispatch => ({
     onLoad: (props) => {
         if(props.currentUser){
-            dispatch(getUserWishes());            
+            dispatch(getUserWishes());   
+            dispatch(getClaimedWishes());         
         }
     }
 });
 
 class Home extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            viewing: WISHES
+        }
+
+        this.handleViewToggle = this.handleViewToggle.bind(this); 
+    }
 
     componentWillMount() {
         this.props.onLoad(this.props);
@@ -34,19 +51,63 @@ class Home extends Component {
         }
     }
 
+    handleViewToggle() {
+        var newViewing = WISHES;
+        if(this.state.viewing === WISHES){
+            newViewing = CLAIMED_WISHES;
+        }
+        this.setState({
+          viewing: newViewing
+        });
+      }
+
     render() {
-        function homeBody(props){
+
+        const handler = this.handleViewToggle;
+
+        function wishesOrClaimed(props, viewing){
+            if(viewing === WISHES){
+                return(<div>
+                    <h4>Your wishes:</h4>
+                    <WishList wishList={props.wishList} isCurrentUser={true}/>
+                    </div>);
+            } else if (viewing === CLAIMED_WISHES){
+                return(<div>
+                    <h4>Claimed wishes:</h4>
+                    <WishList wishList={props.claimedWishes}/>
+                    </div>);
+            }
+        }
+
+        function viewToggle(viewing){
+            var buttonText = "View Your Wishes";
+            if(viewing === WISHES){
+                buttonText = "View Claimed Wishes";
+            }
+
+            return(
+                <div>
+                    <button onClick={() => handler()}>
+                        {buttonText}
+                    </button>
+                </div>
+            );
+
+        }
+
+        function homeBody(props, state){
             if (props.currentUser) {
                 return (
                     <div className="home">
-                    <div className="wishList">
                         <h2>{user(props)}</h2>
-                        <h4>Your wishes:</h4>
-                        <WishList wishList={props.wishList} isCurrentUser={true}/>
+                        <div className="add-wish">
+                            <Link to='/addwish'>Add Wish</Link>
+                        </div>
+                        {viewToggle(state.viewing)}
+                    <div className="wishList">
+                        {wishesOrClaimed(props, state.viewing)}
                     </div>
-                    <div className="add-wish">
-                        <Link to='/addwish'>Add Wish</Link>
-                    </div>
+                    
                 </div>
                 );
             }
@@ -68,7 +129,7 @@ class Home extends Component {
         }
 
         return (
-            homeBody(this.props)
+            homeBody(this.props, this.state)
         );
     }
 }

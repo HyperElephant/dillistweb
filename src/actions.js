@@ -14,6 +14,7 @@ const ADD_FRIEND = 'ADD_FRIEND';
 const REMOVE_FRIEND = 'REMOVE_FRIEND';
 const CLAIM_WISH = 'CLAIM_WISH';
 const UNCLAIM_WISH = 'UNCLAIM_WISH';
+const CLAIMED_WISHES = 'CLAIMED_WISHES';
 
 export function appLoad(token) {
     fetcher.setToken(token);
@@ -119,6 +120,13 @@ export function unclaimWish(id) {
     })
 }
 
+export function getClaimedWishes() {
+    return ({
+        type: CLAIMED_WISHES,
+        payload: fetcher.Wishes.claimedWishes()
+    })
+}
+
 export {
     LOGIN,
     REGISTER,
@@ -129,4 +137,5 @@ export {
     GET_USER_PROFILE,
     APP_LOAD,
     LOGOUT,
+    CLAIMED_WISHES
 }

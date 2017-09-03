@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../App.css';
 import { connect } from 'react-redux';
 
-import {getUserWishes, removeWish, claimWish, unclaimWish} from '../actions';
+import {getUserWishes, removeWish, claimWish, unclaimWish, getClaimedWishes} from '../actions';
 
 const mapStateToProps = state => ({
   currentUser: state.common.currentUser,
@@ -14,13 +14,23 @@ const mapDispatchToProps = dispatch => ({
       dispatch(removeWish(id));
       dispatch(getUserWishes()); 
     },
-    claimWish: (id, username) => {
+    claimWish: (id, user) => {
       dispatch(claimWish(id));
-      dispatch(getUserWishes(username));
+      if(user){
+        dispatch(getUserWishes(user.username));        
+      } else {
+        dispatch(getUserWishes());
+        dispatch(getClaimedWishes());          
+      }
     },
-    unclaimWish: (id, username) => {
+    unclaimWish: (id, user) => {
       dispatch(unclaimWish(id));
-      dispatch(getUserWishes(username));
+      if(user){
+        dispatch(getUserWishes(user.username));        
+      } else {
+        dispatch(getUserWishes()); 
+        dispatch(getClaimedWishes());                 
+      }
     }
 
   });
@@ -47,13 +57,13 @@ class WishView extends Component {
           if(!isCurrentUser){
             if(!wish.giver){
               return(
-                <button onClick={() => claimWish(wish.id, user.username)}
+                <button onClick={() => claimWish(wish.id, user)}
                   className="wish-claim-button">Claim Wish</button>);
             }
             else if(wish.giver && wish.giver.username === currentUser.username)
             {
               return(
-                <button onClick={() => unclaimWish(wish.id, user.username)}
+                <button onClick={() => unclaimWish(wish.id, user)}
                 className="wish-claim-button">Unclaim Wish</button>);
             }
             else{
