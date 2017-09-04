@@ -64,7 +64,7 @@ class AllUsers extends Component {
 }
 
 AllUsers.propTypes = {
-  currentUser: PropTypes.instanceOf(User).isRequired,
+  currentUser: PropTypes.instanceOf(User),
   //userList: PropTypes.arrayOf(PropTypes.instanceof(User)),
   userList: PropTypes.arrayOf(PropTypes.object),
   userCount: PropTypes.number,

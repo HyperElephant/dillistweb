@@ -76,7 +76,7 @@ class Home extends Component {
             } else if (viewing === CLAIMED_WISHES){
                 return(<div>
                     <h4>Claimed wishes:</h4>
-                    <WishList wishList={props.claimedWishes}/>
+                    <WishList wishList={props.claimedWishes} isCurrentUser={true}/>
                     </div>);
             }
         }
@@ -137,7 +137,7 @@ class Home extends Component {
 }
 
 Home.propTypes = {
-    currentUser: PropTypes.instanceOf(User).isRequired,
+    currentUser: PropTypes.instanceOf(User),
     wishList: PropTypes.arrayOf(PropTypes.instanceOf(Wish)),
     wishesCount: PropTypes.number,
     claimedWishes: PropTypes.arrayOf(PropTypes.instanceOf(Wish)),

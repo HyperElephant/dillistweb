@@ -3,6 +3,8 @@ import './App.css';
 import {Route, withRouter} from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import PropTypes from 'prop-types';
+
 import { appLoad } from './actions';
 
 import Header from './Components/Header';
@@ -32,5 +34,9 @@ class App extends Component {
     )
   }
 }
+
+App.propTypes = {
+  onLoad: PropTypes.func.isRequired
+};
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
