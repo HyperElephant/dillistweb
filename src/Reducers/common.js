@@ -5,6 +5,8 @@ import {
   LOGOUT,
 } from '../actions';
 
+import User from '../Models/User';
+
 const defaultState = {
     token: null,
     currentUser: null,
@@ -18,14 +20,14 @@ export default (state = defaultState, action) => {
           ...state,
           token: action.token || null,
           appLoaded: true,
-          currentUser: action.payload ? action.payload.user : null
+          currentUser: action.payload ? new User(action.payload.user.username, action.payload.user.email) : null
         };
       case LOGIN:
       case REGISTER:
         return {
           ...state,
           token: action.error ? null : action.payload.user.token,
-          currentUser: action.error ? null : action.payload.user,
+          currentUser: action.payload ? new User(action.payload.user.username, action.payload.user.email) : null,
           redirectTo: '/home'
         };
       case 'REDIRECT':
