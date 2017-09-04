@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { register } from '../actions'
 
@@ -86,5 +87,10 @@ class Register extends Component {
     );
   }
 }
+
+Register.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register);

@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import '../App.css';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 import { logout } from '../actions';
+
+import User from '../Models/User';
 
 const mapStateToProps = state => ({
     currentUser: state.common.currentUser
@@ -56,5 +59,10 @@ class Header extends Component {
     );
   }
 }
+
+Header.propTypes = {
+  currentUser: PropTypes.instanceOf(User),
+  onLogout: PropTypes.func
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

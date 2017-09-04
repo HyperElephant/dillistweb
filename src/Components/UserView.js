@@ -1,7 +1,10 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import '../App.css';
+
+import User from '../Models/User';
 
 class UserView extends Component {
     render(){
@@ -17,5 +20,9 @@ class UserView extends Component {
     }
   
 }
+
+UserView.propTypes = {
+  user: PropTypes.instanceOf(User).isRequired
+};
 
 export default UserView;

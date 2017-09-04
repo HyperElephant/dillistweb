@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import '../App.css';
+import PropTypes from 'prop-types';
 
-import UserList from '../Components/UserList';
+import { connect } from 'react-redux';
 
 import { getUserList } from '../actions'
 
-import { connect } from 'react-redux';
+import User from '../Models/User';
+
+import UserList from '../Components/UserList';
 
 const mapStateToProps = state => ({
     currentUser: state.common.currentUser,
@@ -36,7 +39,7 @@ class AllUsers extends Component {
   render() {
     function getUsers(props) {
       if (props.userList) {
-        return props.userList.map((user, i) => {
+        return props.userList.map((user) => {
           if (user !== props.currentUser) {
             return user;
           }
@@ -58,6 +61,15 @@ class AllUsers extends Component {
       </div>
     );
   }
+}
+
+AllUsers.propTypes = {
+  currentUser: PropTypes.instanceOf(User).isRequired,
+  //userList: PropTypes.arrayOf(PropTypes.instanceof(User)),
+  userList: PropTypes.arrayOf(PropTypes.object),
+  userCount: PropTypes.number,
+
+  onLoad: PropTypes.func.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllUsers);

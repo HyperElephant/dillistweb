@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { login } from '../actions'
 
@@ -76,5 +77,9 @@ class Login extends Component {
     );
   }
 }
+
+Login.propTypes = {
+  onSubmit: PropTypes.func.isRequired
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

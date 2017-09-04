@@ -1,5 +1,10 @@
-import WishView from './WishView';
 import React from 'react';
+import PropTypes from 'prop-types';
+
+//import Wish from '../Models/Wish';
+
+import WishView from './WishView';
+
 
 const WishList = props => {
   if (!props.wishList) {
@@ -29,6 +34,11 @@ const WishList = props => {
       }
     </div>
   );
+};
+
+WishList.propTypes = {
+  wishList: PropTypes.arrayOf(PropTypes.object),
+  isCurrentUser: PropTypes.bool.isRequired
 };
 
 export default WishList;

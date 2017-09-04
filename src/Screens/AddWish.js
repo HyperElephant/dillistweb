@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import '../App.css';
 import { connect } from 'react-redux';
 
+import PropTypes from 'prop-types';
+
 import { addWish } from '../actions'
 
 const mapStateToProps = state => ({
@@ -10,7 +12,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onSubmit: (title, url) =>
-    dispatch(addWish(title, title))
+    dispatch(addWish(title, url))
 });
 
 
@@ -75,5 +77,9 @@ class AddWish extends Component {
     );
   }
 }
+
+AddWish.propTypes = {
+  onSubmit: PropTypes.func
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddWish);

@@ -2,7 +2,12 @@ import React, { Component } from 'react';
 import '../App.css';
 import { connect } from 'react-redux';
 
+import PropTypes from 'prop-types';
+
 import {getUserWishes, removeWish, claimWish, unclaimWish, getClaimedWishes} from '../actions';
+
+import User from '../Models/User';
+import Wish from '../Models/Wish';
 
 const mapStateToProps = state => ({
   currentUser: state.common.currentUser,
@@ -10,7 +15,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    removeWish: (id, author) => {
+    removeWish: (id) => {
       dispatch(removeWish(id));
       dispatch(getUserWishes()); 
     },
@@ -84,6 +89,17 @@ class WishView extends Component {
         );
     }
   
+}
+
+WishView.propTypes = {
+  wish: PropTypes.instanceOf(Wish).isRequired,
+  isCurrentUser: PropTypes.bool.isRequired,
+  user: PropTypes.instanceOf(User),
+  currentUser: PropTypes.instanceOf(User).isRequired,
+
+  removeWish: PropTypes.func.isRequired,
+  claimWish: PropTypes.func.isRequired,
+  unclaimWish: PropTypes.func.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(WishView);

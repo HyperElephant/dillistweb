@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import '../App.css';
-
-import { getUserWishes, getUserProfile, addFriend, removeFriend } from '../actions'
+import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
+import { getUserWishes, getUserProfile, addFriend, removeFriend } from '../actions'
+
+import User from '../Models/User';
+import Wish from '../Models/Wish';
 
 import WishList from './WishList';
 
@@ -90,5 +93,17 @@ class Profile extends Component {
         );
     }
 }
+
+Profile.propTypes = {
+    currentUser: PropTypes.instanceOf(User),
+    wishList: PropTypes.arrayOf(PropTypes.instanceOf(Wish)),
+    wishesCount: PropTypes.number,
+    user: PropTypes.instanceOf(User),
+
+    onLoad: PropTypes.func,
+    onUserLoaded: PropTypes.func,
+    addFriend: PropTypes.func,
+    removeFriend: PropTypes.func
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Switch, Route} from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import Home from '../Screens/Home';
 import Login from '../Screens/Login';
@@ -43,6 +44,12 @@ class Main extends Component {
             </div>
         );
     }
+}
+
+Main.propTypes = {
+    history: PropTypes.object,
+    redirectTo: PropTypes.string,
+    onRedirect: PropTypes.func
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

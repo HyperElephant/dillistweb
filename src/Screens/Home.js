@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import '../App.css';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { getUserWishes, getClaimedWishes } from '../actions'
 
-import { connect } from 'react-redux';
-
+import User from '../Models/User';
+import Wish from '../Models/Wish';
 import WishList from '../Components/WishList';
 
 
@@ -133,5 +135,15 @@ class Home extends Component {
         );
     }
 }
+
+Home.propTypes = {
+    currentUser: PropTypes.instanceOf(User).isRequired,
+    wishList: PropTypes.arrayOf(PropTypes.instanceOf(Wish)),
+    wishesCount: PropTypes.number,
+    claimedWishes: PropTypes.arrayOf(PropTypes.instanceOf(Wish)),
+    claimedWishesCount: PropTypes.number,
+
+    onLoad: PropTypes.func.isRequired
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

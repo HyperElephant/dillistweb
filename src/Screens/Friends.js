@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getFriends } from '../actions';
 
+import PropTypes from 'prop-types';
+
+import User from '../Models/User';
+
 import UserList from '../Components/UserList';
 
 import '../App.css';
@@ -42,5 +46,12 @@ class Friends extends Component {
         );
     }
 }
+
+Friends.propTypes = {
+    currentUser: PropTypes.instanceOf(User).isRequired,
+    friends: PropTypes.arrayOf(PropTypes.instanceOf(User)),
+
+    onLoad: PropTypes.func
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Friends);

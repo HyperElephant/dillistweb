@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import UserView from './UserView';
 
+import PropTypes from 'prop-types';
+
+import User from '../Models/User';
+
 const defaultNoUsersString = "No users to display.";
 
 class UserList extends Component {
@@ -48,5 +52,9 @@ class UserList extends Component {
         );
     }
 }
+
+UserList.propTypes = {
+    userList: PropTypes.arrayOf(PropTypes.instanceOf(User))
+};
 
 export default UserList;
