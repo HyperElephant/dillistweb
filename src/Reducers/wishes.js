@@ -10,13 +10,13 @@ export default (state = {}, action) => {
         case USER_WISHES:
             return {
             ...state,
-            wishList: action.payload.wishes.map((wish) => { return new Wish(wish.is, wish.title, wish.url)}),
+            wishList: action.payload.wishes.map((wish) => { return new Wish(wish.id, wish.title, wish.url)}),
             wishesCount: action.payload.wishesCount
             };
         case CLAIMED_WISHES:
             return {
             ...state,
-            claimedWishes: action.payload.wishes.map((wish) => { return new Wish(wish.is, wish.title, wish.url)}),
+            claimedWishes: action.payload.wishes.map((wish) => { return new Wish(wish.id, wish.title, wish.url)}),
             claimedWishesCount: action.payload.wishesCount
             };
         default:

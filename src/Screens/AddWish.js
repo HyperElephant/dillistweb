@@ -39,6 +39,10 @@ class AddWish extends Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.onSubmit(this.state.title, this.state.url);
+    this.setState({
+      title: "",
+      url: ""
+    });
   }
 
   render() {

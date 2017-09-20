@@ -51,6 +51,7 @@ class WishView extends Component {
         const claimWish = this.props.claimWish;
         const unclaimWish = this.props.unclaimWish;
 
+
         function removeButton(isCurrentUser){
           if(isCurrentUser){
             return (
