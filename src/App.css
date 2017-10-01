@@ -139,3 +139,18 @@
   background: red;
 }
 
+.home-tab-item {
+  background:none;
+  border:none;
+  margin:0;
+  font-size: 12pt;
+}
+
+.home-tab-selected {
+  border-bottom:1px solid gray;
+}
+.home-tab-selected:focus {
+  outline: none;
+}
+
+

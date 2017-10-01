@@ -4,30 +4,37 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { getUserWishes, getClaimedWishes } from '../actions'
+import { getUserWishes, getClaimedWishes, getFriends, logout } from '../actions'
 
 import User from '../Models/User';
 import Wish from '../Models/Wish';
 import WishList from '../Components/WishList';
-
+import UserList from '../Components/UserList';
 
 const CLAIMED_WISHES = "CLAIMED_WISHES";
 const WISHES = "WISHES";
+const FRIENDS = "FRIENDS";
+const SETTINGS = "SETTINGS";
 
 const mapStateToProps = state => ({
     currentUser: state.common.currentUser,
     wishList: state.wishes.wishList,
     wishesCount: state.wishes.wishesCount,
     claimedWishes: state.wishes.claimedWishes,
-    claimedWishesCount: state.wishes.claimedWishesCount
+    claimedWishesCount: state.wishes.claimedWishesCount,
+    friends: state.users.friends
 });
 
 const mapDispatchToProps = dispatch => ({
     onLoad: (props) => {
         if(props.currentUser){
-            dispatch(getUserWishes());   
-            dispatch(getClaimedWishes());         
+            dispatch(getUserWishes());
+            dispatch(getClaimedWishes());      
+            dispatch(getFriends());   
         }
+    },
+    onLogout: () => {
+        dispatch(logout())
     }
 });
 
@@ -40,7 +47,7 @@ class Home extends Component {
             viewing: WISHES
         }
 
-        this.handleViewToggle = this.handleViewToggle.bind(this); 
+        this.handleViewSwitch = this.handleViewSwitch.bind(this); 
     }
 
     componentWillMount() {
@@ -53,44 +60,62 @@ class Home extends Component {
         }
     }
 
-    handleViewToggle() {
-        var newViewing = WISHES;
-        if(this.state.viewing === WISHES){
-            newViewing = CLAIMED_WISHES;
-        }
+    handleViewSwitch(view) {
         this.setState({
-          viewing: newViewing
+            viewing: view
         });
       }
 
     render() {
 
-        const handler = this.handleViewToggle;
+        const handler = this.handleViewSwitch;
+
+        const selectedButton = "home-tab-item home-tab-selected";
+        const normalButton = "home-tab-item";
 
         function wishesOrClaimed(props, viewing){
             if(viewing === WISHES){
-                return(<div>
-                    <h4>Your wishes:</h4>
-                    <WishList wishList={props.wishList} isCurrentUser={true}/>
+                return(
+                    <div>
+                        <WishList wishList={props.wishList} isCurrentUser={true}/>
                     </div>);
             } else if (viewing === CLAIMED_WISHES){
-                return(<div>
-                    <h4>Claimed wishes:</h4>
-                    <WishList wishList={props.claimedWishes} isCurrentUser={true}/>
+                return(
+                    <div>
+                        <WishList wishList={props.claimedWishes} isCurrentUser={true}/>
                     </div>);
+            } else if (viewing === FRIENDS){
+                return(
+                    <div>
+                        <UserList userList={props.friends} noUsersString={"No friends... :("}/>
+                    </div>
+                );
+            }
+            else if (viewing === SETTINGS){
+                return(
+                    <div>
+                        <button className="logout-button" onClick= {() => props.onLogout() }>
+                            Logout
+                        </button>
+                    </div>
+                );
             }
         }
 
-        function viewToggle(viewing){
-            var buttonText = "View Your Wishes";
-            if(viewing === WISHES){
-                buttonText = "View Claimed Wishes";
-            }
-
+        function viewButtons(state){
             return(
                 <div>
-                    <button onClick={() => handler()}>
-                        {buttonText}
+                    <button onClick={() => handler(WISHES)} className={state.viewing === WISHES ? selectedButton : normalButton}>
+                        Your Wishes
+                    </button>
+                    <button onClick={() => handler(CLAIMED_WISHES)} className={state.viewing === CLAIMED_WISHES ? selectedButton : normalButton}>
+                        Claimed Wishes
+                    </button>
+                    <button onClick={() => handler(FRIENDS)} className={state.viewing === FRIENDS ? selectedButton : normalButton}>
+                        Friends
+                    </button>
+                    <button onClick={() => handler(SETTINGS)} className={state.viewing === SETTINGS ? selectedButton : normalButton}>
+                        Settings
                     </button>
                 </div>
             );
@@ -105,7 +130,7 @@ class Home extends Component {
                         <div className="add-wish">
                             <Link to='/addwish'>Add Wish</Link>
                         </div>
-                        {viewToggle(state.viewing)}
+                        {viewButtons(state)}
                     <div className="wishList">
                         {wishesOrClaimed(props, state.viewing)}
                     </div>
