@@ -1,6 +1,7 @@
 module.exports = {
     "plugins": [
-        "react"
+        "react",
+        "jest"
     ],
     "parserOptions": {
         "ecmaVersion": 6,
