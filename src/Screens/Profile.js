@@ -8,7 +8,7 @@ import { getUserWishes, getUserProfile, addFriend, removeFriend } from '../actio
 import User from '../Models/User';
 import Wish from '../Models/Wish';
 
-import WishList from './WishList';
+import WishList from '../Components/WishList';
 
 
 const mapStateToProps = state => ({

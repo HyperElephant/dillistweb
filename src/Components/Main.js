@@ -8,7 +8,7 @@ import Login from '../Screens/Login';
 import Register from '../Screens/Register';
 import AddWish from '../Screens/AddWish';
 import AllUsers from '../Screens/AllUsers';
-import Profile from './Profile';
+import Profile from '../Screens/Profile';
 import Friends from '../Screens/Friends';
 
 const mapStateToProps = state => ({
