@@ -20,7 +20,7 @@ export default (state = defaultState, action) => {
           ...state,
           token: action.token || null,
           appLoaded: true,
-          currentUser: action.payload.user ? new User(action.payload.user.username, action.payload.user.email) : null
+          currentUser: action.payload ? new User(action.payload.user.username, action.payload.user.email) : null
         };
       case LOGIN:
       case REGISTER:
