@@ -44,23 +44,21 @@ class Login extends Component {
   render() {
     return (
       <div className="Login">
+        <h2 className='login-register-title'>
+          Welcome back!
+        </h2>
         <form onSubmit={this.handleSubmit}>
             <ul className="login-register-form-list">
                 <li className="login-register-list-item">
-                    <label>
-                        Email:
-                    </label>
-                    <input 
+                    <input placeholder="email"
                         name="email"
                         type="text" 
                         value={this.state.email} 
                         onChange={this.handleChange}/>
                 </li>
                 <li className="login-register-list-item">
-                    <label>
-                        Password:
-                    </label>
                     <input
+                    placeholder="password"
                         name="password"
                         type="text"
                         value={this.state.password}

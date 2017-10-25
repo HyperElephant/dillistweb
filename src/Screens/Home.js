@@ -76,24 +76,24 @@ class Home extends Component {
         function wishesOrClaimed(props, viewing){
             if(viewing === WISHES){
                 return(
-                    <div>
+                    <div className='home__selected-content'>
                         <WishList wishList={props.wishList} isCurrentUser={true}/>
                     </div>);
             } else if (viewing === CLAIMED_WISHES){
                 return(
-                    <div>
+                    <div className='home__selected-content'>
                         <WishList wishList={props.claimedWishes} isCurrentUser={true}/>
                     </div>);
             } else if (viewing === FRIENDS){
                 return(
-                    <div>
+                    <div className='home__selected-content'>
                         <UserList userList={props.friends} noUsersString={"No friends... :("}/>
                     </div>
                 );
             }
             else if (viewing === SETTINGS){
                 return(
-                    <div>
+                    <div className='home__selected-content'>
                         <button className="logout-button" onClick= {() => props.onLogout() }>
                             Logout
                         </button>
@@ -127,11 +127,11 @@ class Home extends Component {
                 return (
                     <div className="home">
                         <h2>{user(props)}</h2>
-                        <div className="add-wish">
-                            <Link to='/addwish'>Add Wish</Link>
+                        <div className="make-wish">
+                            <Link to='/addwish'>Make a Wish!</Link>
                         </div>
                         {viewButtons(state)}
-                    <div className="wishList">
+                    <div className="wish-list">
                         {wishesOrClaimed(props, state.viewing)}
                     </div>
                     

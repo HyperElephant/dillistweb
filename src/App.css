@@ -2,16 +2,15 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
 .App-header {
   background-color: #5CBE58;
   height: 80px;
   padding: 20px;
   color: white;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  box-shadow: 0px 5px 5px #888888;
 }
 
 .App-intro {
@@ -23,83 +22,10 @@
   float: left;
 }
 
-.login-register-form-list {
-  list-style: none;
-}
-
-.login-register-form-list Label {
-  display: inline-block;
-  width: 100px;
-  text-align: left;
-}
-
-.login-register-list-item {
-  margin: 10px;
-}
-
-.register-button {
-  width: 200px;
-  background-color:  gray;
-}
-
+/* Header */
 .header-list {
   list-style: none;
-  display: inline-block;
-}
 
-.header-nav {
-  float: right;
-}
-
-.wishList {
-  float: left;
-}
-
-.add-wish {
-  float: right;
-  margin-right: 60px;
-  margin-top: 20px;
-}
-
-.add-wish a{
-  text-decoration: none;
-  color: #5CBE58;
-}
-
-.add-wish a:hover {
-  color: darkgreen;
-}
-
-.add-wish-form-list {
-  list-style: none;
-}
-
-.add-wish-form-list Label {
-  display: inline-block;
-  width: 100px;
-  text-align: left;
-}
-
-.wish-view {
-  border-bottom:1px solid gray;
-}
-
-.wish-view a:hover {
-  color: darkgreen;
-}
-
-.wish-title {
-  display: inline-block;
-  margin-right: 100px;
-}
-
-.wish-url {
-  display: inline-block;
-  text-align: right;
-}
-
-.home {
-  margin-left: 60px;
 }
 
 .header-list a {
@@ -125,18 +51,66 @@
   cursor: pointer;
 }
 
-.wish-url {
+.header-nav {
+  float: right;
+  margin-right: 40px;
+}
+
+/* Main Content */
+.content {
+  margin-top: 140px;
+}
+
+/* Login and Register */
+.login-register-title {
+  text-align: center;
+}
+
+.login-register-form-list {
+  list-style: none;
+}
+
+.login-register-list-item {
+  text-align: center;
+  margin: 10px;
+
+}
+
+.register-button {
+  text-align: center;
+  background:  none;
   color: #5CBE58;
-  margin-right: 10 px;
+  border: none;
+  font-size: medium;
 }
 
-.user-list {
+.register-button:hover{
+  color: purple;
+}
+
+/* Home */
+
+.wish-list {
+  float: left;
+}
+
+.make-wish {
+  float: right;
+  margin-right: 60px;
+  margin-top: 20px;
+}
+
+.make-wish a{
+  text-decoration: none;
+  color: #5CBE58;
+}
+
+.make-wish  a:hover {
+  color: darkgreen;
+}
+
+.home {
   margin-left: 60px;
-}
-
-.wish-remove-button:hover {
-  cursor: pointer;
-  background: red;
 }
 
 .home-tab-item {
@@ -146,11 +120,97 @@
   font-size: 12pt;
 }
 
+.home-tab-item:hover{
+  color: gray;
+}
+
 .home-tab-selected {
   border-bottom:1px solid gray;
 }
 .home-tab-selected:focus {
   outline: none;
 }
+
+.home__selected-content {
+  margin: 20px;
+}
+
+.logout-button {
+  background: none;
+  color: red;
+  border: none;
+  font-size: medium;
+}
+
+.logout-button:hover{
+  font-weight: bold;
+}
+
+/* Add Wish */
+.add-wish {
+  width: 100%;
+}
+.add-wish-title {
+  text-align: center;
+}
+
+.add-wish-form-list {
+  list-style: none;
+}
+
+.add-wish-list-item {
+  text-align: center;
+  margin: 10px;
+}
+
+.add-wish-button {
+  text-align: center;
+  border: none;
+  background: none;
+  font-size: medium;
+  font-weight: bold;
+  color: #5CBE58;
+}
+
+.add-wish-button:hover {
+  color: purple;
+}
+
+/* Wish View */
+.wish-view {
+  border-bottom:1px solid gray;
+}
+
+.wish-view a:hover {
+  color: darkgreen;
+}
+
+.wish-title {
+  display: inline-block;
+  margin-right: 100px;
+}
+
+.wish-url {
+  display: inline-block;
+  text-align: right;
+}
+
+.wish-url {
+  color: #5CBE58;
+  margin-right: 10 px;
+}
+
+.wish-remove-button:hover {
+  cursor: pointer;
+  background: red;
+}
+
+
+
+.user-list {
+  margin-left: 60px;
+}
+
+
 
 

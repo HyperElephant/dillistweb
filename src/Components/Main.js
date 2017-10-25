@@ -31,7 +31,7 @@ class Main extends Component {
 
     render() {
         return (
-            <div>
+            <div className='content'>
                 <Switch>
                     <Route exact path='/home' component={Home}/>
                     <Route path='/addwish' component={AddWish}/>
