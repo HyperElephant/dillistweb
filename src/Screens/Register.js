@@ -44,33 +44,27 @@ class Register extends Component {
   render() {
     return (
       <div className="Register">
+        <h2 className='login-register-title'>
+          Happy to have you join us!
+        </h2>
         <form onSubmit={this.handleSubmit}>
             <ul className="login-register-form-list">
                 <li className="login-register-list-item">
-                    <label>
-                        Email:
-                    </label>
-                    <input 
+                    <input placeholder="email"
                         name="email"
                         type="text" 
                         value={this.state.email} 
                         onChange={this.handleChange}/>
                 </li>
                 <li className="login-register-list-item">
-                    <label>
-                        Username:
-                    </label>
-                    <input 
+                    <input placeholder="username"
                         name="username"
                         type="text" 
                         value={this.state.username} 
                         onChange={this.handleChange}/>
                 </li>
                 <li className="login-register-list-item">
-                    <label>
-                        Password:
-                    </label>
-                    <input
+                    <input placeholder="password"
                         name="password"
                         type="text"
                         value={this.state.password}
