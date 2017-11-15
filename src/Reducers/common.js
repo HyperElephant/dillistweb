@@ -29,7 +29,7 @@ export default (state = defaultState, action) => {
         } 
         else if(action.status === ERROR){
 
-          
+
         } 
         else {
           
@@ -37,13 +37,23 @@ export default (state = defaultState, action) => {
         
       case LOGIN:
       case REGISTER:
-        return {
-          ...state,
-          token: action.error ? null : action.payload.user.token,
-          currentUser: action.payload && action.payload.user ?
-           new User(action.payload.user.username, action.payload.user.email) : null,
-          redirectTo: '/home'
-        };
+        if(action.status === SUCCESS){
+          return {
+            ...state,
+            token: action.error ? null : action.payload.user.token,
+            currentUser: action.payload && action.payload.user ?
+            new User(action.payload.user.username, action.payload.user.email) : null,
+            redirectTo: '/home'
+          };
+        } 
+        else if(action.status === ERROR){
+
+          
+        } 
+        else {
+          
+        }
+        
       case 'REDIRECT':
         return { ...state, redirectTo: null };
       case LOGOUT:
