@@ -16,11 +16,9 @@ const CLAIM_WISH = 'CLAIM_WISH';
 const UNCLAIM_WISH = 'UNCLAIM_WISH';
 const CLAIMED_WISHES = 'CLAIMED_WISHES';
 
-<<<<<<< HEAD
-=======
+
 const SUCCESS = 'SUCCESS';
 const ERROR = 'ERROR';
->>>>>>> f5e4cc400da77ecd717dc6e60eb87eb09c30ce43
 
 export function appLoad(token) {
     fetcher.setToken(token);
