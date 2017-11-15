@@ -16,6 +16,9 @@ const CLAIM_WISH = 'CLAIM_WISH';
 const UNCLAIM_WISH = 'UNCLAIM_WISH';
 const CLAIMED_WISHES = 'CLAIMED_WISHES';
 
+const SUCCESS = 'SUCCESS';
+const ERROR = 'ERROR';
+
 export function appLoad(token) {
     fetcher.setToken(token);
     return(
@@ -137,5 +140,7 @@ export {
     GET_USER_PROFILE,
     APP_LOAD,
     LOGOUT,
-    CLAIMED_WISHES
+    CLAIMED_WISHES,
+    SUCCESS,
+    ERROR,
 }
