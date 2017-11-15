@@ -26,9 +26,12 @@ export default (state = defaultState, action) => {
             currentUser: action.payload && action.payload.user ?
             new User(action.payload.user.username, action.payload.user.email) : null
           };
-        } else if(action.status === ERROR){
+        } 
+        else if(action.status === ERROR){
 
-        } else {
+          
+        } 
+        else {
           
         }
         
