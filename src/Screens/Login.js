@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../App.css';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Validator from 'email-validator';
 
 import { login } from '../actions'
 
@@ -38,10 +39,15 @@ class Login extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.onSubmit(this.state.email, this.state.password);
+    if (Validator.validate(this.state.email)) {
+      this.props.onSubmit(this.state.email, this.state.password);
+    } else {
+      alert("Must login with a valid email.");
+    }
   }
 
   render() {
+
     return (
       <div className="Login">
         <h2 className='login-register-title'>
