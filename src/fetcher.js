@@ -3,6 +3,12 @@ import fetch from 'isomorphic-fetch';
 const API_ROOT = 'http://server.dillist.com/api';
 let token = null;
 
+function handleErrors(response) {
+    if(!response.ok){
+        console.log("Error: " + response.statusText);
+    }
+}
+
 const requests = {
     post: (url, body) => fetch(`${API_ROOT}${url}`, {
         method: 'POST',
@@ -12,10 +18,11 @@ const requests = {
             'authorization': `Token ${token}`
         },
         body: JSON.stringify(body)
-    }).then(function(response){
+    }).then(handleErrors)
+    .then(function(response){
             return response.json();
         }).catch(function(error){
-            console.log(error);
+            console.log("Error in post: " + error);
         }),
 
     get: (url) => fetch(`${API_ROOT}${url}`, {

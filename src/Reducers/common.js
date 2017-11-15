@@ -3,6 +3,8 @@ import {
   REGISTER,
   APP_LOAD,
   LOGOUT,
+  SUCCESS,
+  ERROR
 } from '../actions';
 
 import User from '../Models/User';
@@ -10,24 +12,33 @@ import User from '../Models/User';
 const defaultState = {
     token: null,
     currentUser: null,
-    friends: null,
+    friends: null
 }
 
 export default (state = defaultState, action) => {
     switch (action.type) {
       case APP_LOAD:
-        return {
-          ...state,
-          token: action.token || null,
-          appLoaded: true,
-          currentUser: action.payload && action.payload.user ? new User(action.payload.user.username, action.payload.user.email) : null
-        };
+        if(action.status === SUCCESS){
+          return {
+            ...state,
+            token: action.token || null,
+            appLoaded: true,
+            currentUser: action.payload && action.payload.user ?
+            new User(action.payload.user.username, action.payload.user.email) : null
+          };
+        } else if(action.status === ERROR){
+
+        } else {
+          
+        }
+        
       case LOGIN:
       case REGISTER:
         return {
           ...state,
           token: action.error ? null : action.payload.user.token,
-          currentUser: action.payload && action.payload.user ? new User(action.payload.user.username, action.payload.user.email) : null,
+          currentUser: action.payload && action.payload.user ?
+           new User(action.payload.user.username, action.payload.user.email) : null,
           redirectTo: '/home'
         };
       case 'REDIRECT':

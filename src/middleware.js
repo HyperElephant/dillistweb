@@ -3,20 +3,24 @@ import fetcher from './fetcher';
 import { REGISTER, LOGIN, LOGOUT } from './actions';
 
 const promiseMiddleware = store => next => action => {
-  console.log(action);
   if (isPromise(action.payload)) {
+    store.dispatch(action);
     action.payload.then(
       res => {
+        console.log("Res: " + res);
         action.payload = res;
         store.dispatch(action);
       },
       error => {
+        console.log("Error: " + error);
         action.error = true;
         action.payload = error.response.body;
         store.dispatch(action);
       }
     );
 
+    var startAction = { type: action.type };
+    store.dispatch(startAction);
     return;
   }
 
