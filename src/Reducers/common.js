@@ -3,8 +3,7 @@ import {
   REGISTER,
   APP_LOAD,
   LOGOUT,
-  SUCCESS,
-  ERROR
+  checkStatus
 } from '../actions';
 
 import User from '../Models/User';
@@ -18,42 +17,57 @@ const defaultState = {
 export default (state = defaultState, action) => {
     switch (action.type) {
       case APP_LOAD:
-        if(action.status === SUCCESS){
-          return {
-            ...state,
-            token: action.token || null,
-            appLoaded: true,
-            currentUser: action.payload && action.payload.user ?
-            new User(action.payload.user.username, action.payload.user.email) : null
-          };
-        } 
-        else if(action.status === ERROR){
+        checkStatus(action,
+          //Success
+          action => {
+            return{
+              ...state,
+              token: action.token || null,
+              appLoaded: true,
+              currentUser: action.payload && action.payload.user ?
+              new User(action.payload.user.username, action.payload.user.email) : null
+            }
+          },
+          //Error
+          action => {
+            return {
 
+            }
+          },
+          //Pending
+          action => {
+            return {
 
-        } 
-        else {
-          
-        }
+            }
+          }
+        );
         
       case LOGIN:
       case REGISTER:
-        if(action.status === SUCCESS){
-          return {
-            ...state,
-            token: action.error ? null : action.payload.user.token,
-            currentUser: action.payload && action.payload.user ?
-            new User(action.payload.user.username, action.payload.user.email) : null,
-            redirectTo: '/home'
-          };
-        } 
-        else if(action.status === ERROR){
+        checkStatus(action,
+          //Success
+          action => {
+            return{
+              ...state,
+              token: action.error ? null : action.payload.user.token,
+              currentUser: action.payload && action.payload.user ?
+              new User(action.payload.user.username, action.payload.user.email) : null,
+              redirectTo: '/home'
+            }
+          },
+          //Error
+          action => {
+            return {
 
-          
-        } 
-        else {
-          
-        }
-        
+            }
+          },
+          //Pending
+          action => {
+            return {
+
+            }
+          }
+        );
       case 'REDIRECT':
         return { ...state, redirectTo: null };
       case LOGOUT:

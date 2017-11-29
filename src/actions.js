@@ -16,9 +16,25 @@ const CLAIM_WISH = 'CLAIM_WISH';
 const UNCLAIM_WISH = 'UNCLAIM_WISH';
 const CLAIMED_WISHES = 'CLAIMED_WISHES';
 
-
 const SUCCESS = 'SUCCESS';
 const ERROR = 'ERROR';
+const PENDING ='PENDING';
+
+export function checkStatus(action, success, error, pending) {
+
+    var status = action.status;
+    if(status === SUCCESS){
+        success(action);
+    }
+    else if (status === ERROR){
+        error(action);
+    }
+    else if (status === PENDING){
+        pending(action);
+    }
+
+}
+
 
 export function appLoad(token) {
     fetcher.setToken(token);
