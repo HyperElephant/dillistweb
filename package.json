@@ -5,11 +5,11 @@
   "dependencies": {
     "email-validator": "^1.1.1",
     "isomorphic-fetch": "^2.2.1",
-    "prop-types": "^15.5.7",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
+    "prop-types": "^15.6.0",
+    "react": "^15.6.2",
+    "react-dom": "^15.6.2",
     "react-redux": "^5.0.6",
-    "react-router-dom": "^4.1.2",
+    "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.11",
     "redux": "^3.7.2"
   },
@@ -20,9 +20,9 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "eslint": "^4.6.1",
+    "eslint": "^4.12.0",
     "eslint-config-google": "^0.9.1",
-    "eslint-plugin-react": "^7.3.0",
-    "eslint-watch": "^3.1.2"
+    "eslint-plugin-react": "^7.5.1",
+    "eslint-watch": "^3.1.3"
   }
 }
