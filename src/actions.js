@@ -160,4 +160,5 @@ export {
     CLAIMED_WISHES,
     SUCCESS,
     ERROR,
+    PENDING
 }

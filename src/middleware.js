@@ -39,7 +39,7 @@ function isPromise(v) {
 }
 
 const localStorageMiddleware = store => next => action => {
-  if (action.type === REGISTER || action.type === LOGIN) {
+  if (action.status === SUCCESS && action.type === REGISTER || action.type === LOGIN) {
     if(!action.error) {
       window.localStorage.setItem('jwt', action.payload.user.token);
       fetcher.setToken(action.payload.user.token);
