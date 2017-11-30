@@ -7,7 +7,11 @@ import Validator from 'email-validator';
 import { login } from '../actions'
 
 const mapStateToProps = state => ({
-  currentUser: state.common.currentUser,
+  //Pending
+  loginPending: state.common.loginPending,
+  
+  //Error
+  error: state.common.loginError,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -29,6 +33,7 @@ class Login extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.getMessage = this.getMessage.bind(this);
   }
 
   handleChange(event) {
@@ -43,6 +48,15 @@ class Login extends Component {
       this.props.onSubmit(this.state.email, this.state.password);
     } else {
       alert("Must login with a valid email.");
+    }
+  }
+
+  getMessage(props) {
+    if (props.loginPending) {
+      return "Logging in...";
+    }
+    else if (props.error) {
+      return props.error.message;
     }
   }
 
@@ -75,7 +89,10 @@ class Login extends Component {
                         type="submit"
                         value="Login" />
                 </li>
-                </ul>
+                <li className="login-register-list-item">
+                  {this.getMessage(this.props)}
+                </li>
+            </ul>
         </form>
       </div>
     );

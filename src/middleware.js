@@ -4,7 +4,7 @@ import { REGISTER, LOGIN, LOGOUT } from './actions';
 
 const promiseMiddleware = store => next => action => {
   if (isPromise(action.payload)) {
-    store.dispatch(action);
+    //store.dispatch(action);
     action.payload.then(
       res => {
         console.log("Res: " + res);
