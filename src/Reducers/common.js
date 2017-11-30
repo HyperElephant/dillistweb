@@ -37,6 +37,7 @@ export default (state = defaultState, action) => {
           //Pending
           action => {
             return {
+              appLoadPending: true
 
             }
           }
@@ -64,6 +65,7 @@ export default (state = defaultState, action) => {
           //Pending
           action => {
             return {
+              loginPending: true
 
             }
           }

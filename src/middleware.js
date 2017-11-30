@@ -1,13 +1,20 @@
 import fetcher from './fetcher';
+import {
+  SUCCESS,
+  ERROR,
+  PENDING
+} from './actions';
 
 import { REGISTER, LOGIN, LOGOUT } from './actions';
 
 const promiseMiddleware = store => next => action => {
   if (isPromise(action.payload)) {
+    action.status = PENDING;
     store.dispatch(action);
     action.payload.then(
       res => {
         console.log("Res: " + res);
+        action.status = SUCCESS;
         action.payload = res;
         store.dispatch(action);
       },
