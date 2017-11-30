@@ -7,6 +7,7 @@ function handleErrors(response) {
     if(!response.ok){
         console.log("Error: " + response.statusText);
     }
+    return response;
 }
 
 const requests = {

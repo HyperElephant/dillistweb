@@ -23,7 +23,10 @@ class App extends Component {
   componentWillMount() {
     const token = window.localStorage.getItem('jwt');
     console.log("Token: " + token);
-    this.props.onLoad(token);
+    if(token){
+      this.props.onLoad(token);
+      
+    }
   }
 
   render() {

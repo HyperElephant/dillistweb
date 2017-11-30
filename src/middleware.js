@@ -8,26 +8,33 @@ import {
 import { REGISTER, LOGIN, LOGOUT } from './actions';
 
 const promiseMiddleware = store => next => action => {
+  console.log('Action Status: ')
+  console.log(action.status);
   if (isPromise(action.payload)) {
-    action.status = PENDING;
-    store.dispatch(action);
+    var startAction = { 
+      type: action.type,
+      status: PENDING
+    };
+    store.dispatch(startAction);
+
     action.payload.then(
       res => {
-        console.log("Res: " + res);
-        action.status = SUCCESS;
+        console.log('Result:');
+        console.log(res);
+        if(res.errors){
+          action.status = ERROR;
+        } else {
+          action.status = SUCCESS;
+        }
         action.payload = res;
         store.dispatch(action);
       },
       error => {
-        console.log("Error: " + error);
         action.error = true;
         action.payload = error.response.body;
         store.dispatch(action);
       }
     );
-
-    var startAction = { type: action.type };
-    store.dispatch(startAction);
     return;
   }
 
@@ -39,7 +46,7 @@ function isPromise(v) {
 }
 
 const localStorageMiddleware = store => next => action => {
-  if (action.status === SUCCESS && action.type === REGISTER || action.type === LOGIN) {
+  if (action.status === SUCCESS && (action.type === REGISTER || action.type === LOGIN)) {
     if(!action.error) {
       window.localStorage.setItem('jwt', action.payload.user.token);
       fetcher.setToken(action.payload.user.token);
