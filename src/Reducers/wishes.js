@@ -1,25 +1,65 @@
-import { USER_WISHES, CLAIMED_WISHES } from "../actions";
+import { USER_WISHES, CLAIMED_WISHES, checkStatus } from "../actions";
 
 import Wish from "../Models/Wish";
 
 export default (state = {}, action) => {
   switch (action.type) {
     case USER_WISHES:
-      return {
-        ...state,
-        wishList: action.payload.wishes.map(wish => {
-          return new Wish(wish.id, wish.title, wish.url);
-        }),
-        wishesCount: action.payload.wishesCount
-      };
+      checkStatus(
+        action,
+        //Success
+        action => {
+          return {
+            ...state,
+            wishList: action.payload.wishes.map(wish => {
+              return new Wish(wish.id, wish.title, wish.url);
+            }),
+            wishesCount: action.payload.wishesCount
+          };
+        },
+        //Error
+        action => {
+          return {
+            ...state,
+            getUserWishesError: true
+          };
+        },
+        //Pending
+        action => {
+          return {
+            ...state,
+            gettingUserWishes: true
+          };
+        }
+      );
     case CLAIMED_WISHES:
-      return {
-        ...state,
-        claimedWishes: action.payload.wishes.map(wish => {
-          return new Wish(wish.id, wish.title, wish.url);
-        }),
-        claimedWishesCount: action.payload.wishesCount
-      };
+      checkStatus(
+        action,
+        //Success
+        action => {
+          return {
+            ...state,
+            claimedWishes: action.payload.wishes.map(wish => {
+              return new Wish(wish.id, wish.title, wish.url);
+            }),
+            claimedWishesCount: action.payload.wishesCount
+          };
+        },
+        //Error
+        action => {
+          return {
+            ...state,
+            getClaimedWishesError: true
+          };
+        },
+        //Pending
+        action => {
+          return {
+            ...state,
+            gettingClaimedWishes: true
+          };
+        }
+      );
     default:
       break;
   }
