@@ -1,17 +1,13 @@
-import fetcher from './fetcher';
-import {
-  SUCCESS,
-  ERROR,
-  PENDING
-} from './actions';
+import fetcher from "./fetcher";
+import { SUCCESS, ERROR, PENDING } from "./actions";
 
-import { REGISTER, LOGIN, LOGOUT } from './actions';
+import { REGISTER, LOGIN, LOGOUT } from "./actions";
 
 const promiseMiddleware = store => next => action => {
-  console.log('Action Status: ')
+  console.log("Action Status: ");
   console.log(action.status);
   if (isPromise(action.payload)) {
-    var startAction = { 
+    var startAction = {
       type: action.type,
       status: PENDING
     };
@@ -19,9 +15,9 @@ const promiseMiddleware = store => next => action => {
 
     action.payload.then(
       res => {
-        console.log('Result:');
+        console.log("Result:");
         console.log(res);
-        if(res.errors){
+        if (res.errors) {
           action.status = ERROR;
         } else {
           action.status = SUCCESS;
@@ -42,23 +38,23 @@ const promiseMiddleware = store => next => action => {
 };
 
 function isPromise(v) {
-  return v && typeof v.then === 'function';
+  return v && typeof v.then === "function";
 }
 
 const localStorageMiddleware = store => next => action => {
-  if (action.status === SUCCESS && (action.type === REGISTER || action.type === LOGIN)) {
-    if(!action.error) {
-      window.localStorage.setItem('jwt', action.payload.user.token);
+  if (
+    action.status === SUCCESS &&
+    (action.type === REGISTER || action.type === LOGIN)
+  ) {
+    if (!action.error) {
+      window.localStorage.setItem("jwt", action.payload.user.token);
       fetcher.setToken(action.payload.user.token);
     }
   } else if (action.type === LOGOUT) {
-    window.localStorage.setItem('jwt', '');
+    window.localStorage.setItem("jwt", "");
     fetcher.setToken(null);
   }
   next(action);
 };
 
-export {
-  localStorageMiddleware,
-  promiseMiddleware
-};
+export { localStorageMiddleware, promiseMiddleware };

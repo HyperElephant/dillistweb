@@ -3,7 +3,7 @@
 }
 
 .App-header {
-  background-color: #5CBE58;
+  background-color: #5cbe58;
   height: 80px;
   padding: 20px;
   color: white;
@@ -25,7 +25,6 @@
 /* Header */
 .header-list {
   list-style: none;
-
 }
 
 .header-list a {
@@ -73,18 +72,17 @@
 .login-register-list-item {
   text-align: center;
   margin: 10px;
-
 }
 
 .register-button {
   text-align: center;
-  background:  none;
-  color: #5CBE58;
+  background: none;
+  color: #5cbe58;
   border: none;
   font-size: medium;
 }
 
-.register-button:hover{
+.register-button:hover {
   color: purple;
 }
 
@@ -100,12 +98,12 @@
   margin-top: 0px;
 }
 
-.make-wish a{
+.make-wish a {
   text-decoration: none;
-  color: #5CBE58;
+  color: #5cbe58;
 }
 
-.make-wish  a:hover {
+.make-wish a:hover {
   color: darkgreen;
 }
 
@@ -114,18 +112,18 @@
 }
 
 .home-tab-item {
-  background:none;
-  border:none;
-  margin:0;
+  background: none;
+  border: none;
+  margin: 0;
   font-size: 12pt;
 }
 
-.home-tab-item:hover{
+.home-tab-item:hover {
   color: gray;
 }
 
 .home-tab-selected {
-  border-bottom:1px solid gray;
+  border-bottom: 1px solid gray;
 }
 .home-tab-selected:focus {
   outline: none;
@@ -142,7 +140,7 @@
   font-size: medium;
 }
 
-.logout-button:hover{
+.logout-button:hover {
   font-weight: bold;
 }
 
@@ -169,7 +167,7 @@
   background: none;
   font-size: medium;
   font-weight: bold;
-  color: #5CBE58;
+  color: #5cbe58;
 }
 
 .add-wish-button:hover {
@@ -178,7 +176,7 @@
 
 /* Wish View */
 .wish-view {
-  border-bottom:1px solid gray;
+  border-bottom: 1px solid gray;
 }
 
 .wish-view a:hover {
@@ -196,7 +194,7 @@
 }
 
 .wish-url {
-  color: #5CBE58;
+  color: #5cbe58;
   margin-right: 10 px;
 }
 
@@ -205,12 +203,6 @@
   background: red;
 }
 
-
-
 .user-list {
   margin-left: 60px;
 }
-
-
-
-

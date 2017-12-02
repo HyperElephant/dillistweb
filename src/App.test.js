@@ -1,29 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import {BrowserRouter} from 'react-router-dom';
-import { Provider } from 'react-redux';
-import store from './store';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./store";
 
-
-describe('App', () => {
+describe("App", () => {
   beforeAll(() => {
     const ls = require("./Utilities/localStorage.js");
     ls.setLocalStorage();
   });
 
-  it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render((
+  it("renders without crashing", () => {
+    const div = document.createElement("div");
+    ReactDOM.render(
       <Provider store={store}>
-          <BrowserRouter>
-              <App />
-          </BrowserRouter>
-      </Provider>
-    ), div);
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Provider>,
+      div
+    );
   });
 });
-
-
-
-
