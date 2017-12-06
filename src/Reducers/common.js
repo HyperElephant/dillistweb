@@ -39,7 +39,7 @@ export default (state = defaultState, action) => {
           };
         }
       );
-
+      break;
     case LOGIN:
     case REGISTER:
       checkStatus(
@@ -70,6 +70,7 @@ export default (state = defaultState, action) => {
           };
         }
       );
+      break;
     case "REDIRECT":
       return { ...state, redirectTo: null };
     case LOGOUT:

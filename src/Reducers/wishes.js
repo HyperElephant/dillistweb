@@ -32,6 +32,7 @@ export default (state = {}, action) => {
           };
         }
       );
+      break;
     case CLAIMED_WISHES:
       checkStatus(
         action,
@@ -60,6 +61,7 @@ export default (state = {}, action) => {
           };
         }
       );
+      break;
     default:
       break;
   }

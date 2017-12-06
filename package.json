@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "email-validator": "^1.1.1",
+    "eslint-plugin-jest": "^21.4.2",
     "isomorphic-fetch": "^2.2.1",
     "prop-types": "^15.6.0",
     "react": "^15.6.2",
@@ -20,7 +21,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "eslint": "^4.12.0",
+    "eslint": "^4.12.1",
     "eslint-config-google": "^0.9.1",
     "eslint-plugin-react": "^7.5.1",
     "eslint-watch": "^3.1.3"
