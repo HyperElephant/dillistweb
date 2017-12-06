@@ -23,11 +23,11 @@ const PENDING = "PENDING";
 export function checkStatus(action, success, error, pending) {
   var status = action.status;
   if (status === SUCCESS) {
-    success(action);
+    return success(action);
   } else if (status === ERROR) {
-    error(action);
+    return error(action);
   } else if (status === PENDING) {
-    pending(action);
+    return pending(action);
   }
 }
 

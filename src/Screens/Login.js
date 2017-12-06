@@ -33,6 +33,11 @@ class Login extends Component {
     this.getMessage = this.getMessage.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    console.log("New Props: ");
+    console.log(nextProps);
+  }
+
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value
@@ -49,6 +54,7 @@ class Login extends Component {
   }
 
   getMessage(props) {
+    console.log("gettingMessage");
     if (props.loginPending) {
       return "Logging in...";
     } else if (props.error) {
@@ -84,7 +90,7 @@ class Login extends Component {
               <input className="register-button" type="submit" value="Login" />
             </li>
             <li className="login-register-list-item">
-              {this.getMessage(this.props)}
+              <p>{this.getMessage(this.props)}</p>
             </li>
           </ul>
         </form>

@@ -11,7 +11,7 @@ const defaultState = {
 export default (state = defaultState, action) => {
   switch (action.type) {
     case APP_LOAD:
-      checkStatus(
+      return checkStatus(
         action,
         //Success
         action => {
@@ -42,10 +42,11 @@ export default (state = defaultState, action) => {
 
     case LOGIN:
     case REGISTER:
-      checkStatus(
+      return checkStatus(
         action,
         //Success
         action => {
+          console.log("success");
           return {
             ...state,
             token: action.error ? null : action.payload.user.token,
