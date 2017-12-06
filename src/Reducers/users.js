@@ -1,5 +1,6 @@
 import User from "../Models/User";
 import { checkStatus } from "../actions";
+import {bindActionCreators} from 'redux';
 
 export default (state = {}, action) => {
   switch (action.type) {
@@ -31,7 +32,7 @@ export default (state = {}, action) => {
           };
         }
       );
-
+      break;
     case "GET_USER_PROFILE":
       checkStatus(
         action,
@@ -62,7 +63,7 @@ export default (state = {}, action) => {
           };
         }
       );
-
+      break;
     case "GET_FRIENDS":
       checkStatus(
         action,
@@ -90,7 +91,7 @@ export default (state = {}, action) => {
           };
         }
       );
-
+      break;
     default:
       break;
   }
