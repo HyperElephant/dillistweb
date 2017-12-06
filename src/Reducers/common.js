@@ -35,6 +35,7 @@ export default (state = defaultState, action) => {
         //Pending
         action => {
           return {
+            ...state,
             appLoadPending: true
           };
         }
