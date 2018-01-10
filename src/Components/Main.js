@@ -4,12 +4,12 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 import Home from "../Screens/Home";
-import Login from "../Screens/Login";
-import Register from "../Screens/Register";
-import AddWish from "../Screens/AddWish";
-import AllUsers from "../Screens/AllUsers";
-import Profile from "../Screens/Profile";
-import Friends from "../Screens/Friends";
+//import Login from "../Screens/Login";
+//import Register from "../Screens/Register";
+//import AddWish from "../Screens/AddWish";
+//import AllUsers from "../Screens/AllUsers";
+//import Profile from "../Screens/Profile";
+//import Friends from "../Screens/Friends";
 
 const mapStateToProps = state => ({
   redirectTo: state.common.redirectTo
@@ -32,12 +32,18 @@ class Main extends Component {
       <div className="content">
         <Switch>
           <Route exact path="/home" component={Home} />
-          <Route path="/addwish" component={AddWish} />
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
-          <Route exact path="/users" component={AllUsers} />
-          <Route path="/user/:username" component={Profile} />
-          <Route path="/friends" component={Friends} />
+    
+          {
+            /*
+            <Route path="/addwish" component={AddWish} />
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
+            <Route exact path="/users" component={AllUsers} />
+            <Route path="/user/:username" component={Profile} />
+            <Route path="/friends" component={Friends} />
+            */
+          }
+          
         </Switch>
       </div>
     );
