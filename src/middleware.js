@@ -23,7 +23,7 @@ const promiseMiddleware = store => next => action => {
           action.status = SUCCESS;
         }
         action.payload = res;
-        setTimeout(() => store.dispatch(action), 4000);
+        setTimeout(() => store.dispatch(action), 2000);
       },
       error => {
         action.error = true;
