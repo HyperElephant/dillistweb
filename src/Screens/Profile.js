@@ -6,13 +6,14 @@ import { connect } from "react-redux";
 import WishList from "../Components/WishList";
 import UserList from "../Components/UserList";
 import AddWish from "../Components/AddWish";
+import { PENDING } from "../actions";
 
 const CLAIMED_WISHES = "CLAIMED_WISHES";
 const WISHES = "WISHES";
 
 const FRIENDS = "FRIENDS";
 const REQUESTS = "REQUESTS";
-const PENDING = "PENDING";
+const FRIENDS_PENDING = "PENDING";
 
 const mapStateToProps = state => ({
   /*
@@ -85,15 +86,6 @@ class Profile extends Component {
             <WishList wishList={props.claimedWishes} isCurrentUser={true} />
           </div>
         );
-      } else if (viewing === FRIENDS) {
-        return (
-          <div className="home__selected-content">
-            <UserList
-              userList={props.friends}
-              noUsersString={"No friends... :("}
-            />
-          </div>
-        );
       }
     }
 
@@ -111,38 +103,84 @@ class Profile extends Component {
     }
 
     function wishesButtons(state) {
-      return (
+      if (state.user === state.currentUser) {
+        return (
+          <div>
+            <button
+              onClick={() => wishHandler(WISHES)}
+              className={
+                state.viewing === WISHES ? selectedButton : normalButton
+              }
+            >
+              Your Wishes
+            </button>
+            <button
+              onClick={() => wishHandler(CLAIMED_WISHES)}
+              className={
+                state.viewing === CLAIMED_WISHES ? selectedButton : normalButton
+              }
+            >
+              Claimed Wishes
+            </button>
+          </div>
+        );
+      } else {
         <div>
           <button
             onClick={() => wishHandler(WISHES)}
             className={state.viewing === WISHES ? selectedButton : normalButton}
           >
-            Your Wishes
+            Wishes
           </button>
-          <button
-            onClick={() => wishHandler(CLAIMED_WISHES)}
-            className={
-              state.viewing === CLAIMED_WISHES ? selectedButton : normalButton
-            }
-          >
-            Claimed Wishes
-          </button>
-        </div>
-      );
+        </div>;
+      }
     }
     function friendsButtons(state) {
-      return (
-        <div>
-          <button
-            onClick={() => friendsHandler(FRIENDS)}
-            className={
-              state.viewing === FRIENDS ? selectedButton : normalButton
-            }
-          >
-            Friends
-          </button>
-        </div>
-      );
+      if (state.currentUser === state.user) {
+        return (
+          <div>
+            <button
+              onClick={() => friendsHandler(FRIENDS)}
+              className={
+                state.viewing === FRIENDS ? selectedButton : normalButton
+              }
+            >
+              Friends
+            </button>
+            <button
+              onClick={() => friendsHandler(REQUESTS)}
+              className={
+                state.viewing === REQUESTS ? selectedButton : normalButton
+              }
+            >
+              Requests
+            </button>
+            <button
+              onClick={() => friendsHandler(FRIENDS_PENDING)}
+              className={
+                state.viewing === FRIENDS_PENDING
+                  ? selectedButton
+                  : normalButton
+              }
+            >
+              Pending
+            </button>
+          </div>
+        );
+      } else {
+        return (
+          <div>
+            <button
+              onClick={() => friendsHandler(FRIENDS)}
+              className={
+                state.viewing === FRIENDS ? selectedButton : normalButton
+              }
+            >
+              Friends
+            </button>
+          </div>
+        );
+      }
     }
     function user(props) {
       if (props.currentUser) {
