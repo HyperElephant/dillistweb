@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./Home.css";
-
-const mapStateToProps = state => ({
-    currentUser: state.common.currentUser
-});
+import { Link } from "react-router-dom";
 
 const description = 
 "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\
@@ -19,10 +16,10 @@ class Home extends Component {
             <div className="home">
                 <h2>Home</h2>
                 <div className="description">{description}</div>
-                <button>Sign Up!</button>
+                <Link to="/register">Sign Up!</Link>
             </div>
         );
     }
 }
 
-export default connect(mapStateToProps)(Home);
+export default connect()(Home);

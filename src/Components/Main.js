@@ -4,8 +4,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 import Home from "../Screens/Home";
-//import Login from "../Screens/Login";
-//import Register from "../Screens/Register";
+import LoginRegister from "../Screens/LoginRegister";
 //import AddWish from "../Screens/AddWish";
 //import AllUsers from "../Screens/AllUsers";
 //import Profile from "../Screens/Profile";
@@ -32,12 +31,17 @@ class Main extends Component {
       <div className="content">
         <Switch>
           <Route exact path="/home" component={Home} />
+          <Route path="/login" render={(props) => (
+            <LoginRegister {...props} login="1"/>
+          )}/>
+          <Route path="/register" render={(props) => (
+            <LoginRegister {...props} register="1"/>
+          )}/>
     
           {
             /*
             <Route path="/addwish" component={AddWish} />
-            <Route path="/login" component={Login} />
-            <Route path="/register" component={Register} />
+            
             <Route exact path="/users" component={AllUsers} />
             <Route path="/user/:username" component={Profile} />
             <Route path="/friends" component={Friends} />
