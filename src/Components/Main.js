@@ -5,6 +5,8 @@ import PropTypes from "prop-types";
 
 import Home from "../Screens/Home";
 import LoginRegister from "../Screens/LoginRegister";
+import Profile from "../Screens/Profile";
+
 //import AddWish from "../Screens/AddWish";
 //import AllUsers from "../Screens/AllUsers";
 //import Profile from "../Screens/Profile";
@@ -37,6 +39,7 @@ class Main extends Component {
           <Route path="/register" render={(props) => (
             <LoginRegister {...props} register="1"/>
           )}/>
+          <Route path="/profile" component={Profile} />
     
           {
             /*
@@ -45,9 +48,7 @@ class Main extends Component {
             <Route exact path="/users" component={AllUsers} />
             <Route path="/user/:username" component={Profile} />
             <Route path="/friends" component={Friends} />
-            */
-          }
-          
+            */}
         </Switch>
       </div>
     );
