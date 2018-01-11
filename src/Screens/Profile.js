@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import "../App.css";
+import "./Profile.css";
 import { connect } from "react-redux";
+
+import WishList from "../Components/WishList";
+import UserList from "../Components/UserList";
+import AddWish from "../Components/AddWish";
 
 const CLAIMED_WISHES = "CLAIMED_WISHES";
 const WISHES = "WISHES";
@@ -9,7 +14,33 @@ const FRIENDS = "FRIENDS";
 const REQUESTS = "REQUESTS";
 const PENDING = "PENDING";
 
-class CurrentProfile extends Component {
+const mapStateToProps = state => ({
+  /*
+  currentUser: state.common.currentUser,
+  wishList: state.wishes.wishList,
+  wishesCount: state.wishes.wishesCount,
+  claimedWishes: state.wishes.claimedWishes,
+  claimedWishesCount: state.wishes.claimedWishesCount,
+  friends: state.users.friends
+  */
+});
+
+const mapDispatchToProps = dispatch => ({
+  /*
+  onLoad: props => {
+    if (props.currentUser) {
+      dispatch(getUserWishes());
+      dispatch(getClaimedWishes());
+      dispatch(getFriends());
+    }
+  },
+  onLogout: () => {
+    dispatch(logout());
+  }
+  */
+});
+
+class Profile extends Component {
   constructor(props) {
     super(props);
 
@@ -17,6 +48,9 @@ class CurrentProfile extends Component {
       wishesViewing: WISHES,
       friendsViewing: FRIENDS
     };
+
+    this.handleWishesViewSwitch = this.handleWishesViewSwitch.bind(this);
+    this.handleFriendsViewSwitch = this.handleFriendsViewSwitch.bind(this);
   }
 
   handleWishesViewSwitch(view) {
@@ -114,22 +148,34 @@ class CurrentProfile extends Component {
       if (props.currentUser) {
         return props.currentUser.username;
       } else {
-        return "";
+        return "Hello!";
+      }
+    }
+    function addWish(props) {
+      if (props.currentUser === props.user) {
+        return (
+          <div className="addWish-view profile-section">
+            <AddWish />
+          </div>
+        );
       }
     }
 
     return (
       <div>
         <h2>{user(this.props)}</h2>
-        <div className="friends-view">
+        <div className="friends-view profile-section">
           {friendsButtons(this.state)}
           {friendsSwitch(this.props, this.state.friendsViewing)}
         </div>
-        <div className="wishes-view">
+        <div className="wishes-view profile-section">
           {wishesButtons(this.state)}
           {wishesOrClaimed(this.props, this.state.wishesViewing)}
         </div>
+        {addWish(this.props)}
       </div>
     );
   }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);
