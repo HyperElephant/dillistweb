@@ -5,7 +5,7 @@ import User from "../Models/User";
 const defaultState = {
   token: null,
   currentUser: null,
-  friends: null
+  friends: null,
 };
 
 export default (state = defaultState, action) => {
